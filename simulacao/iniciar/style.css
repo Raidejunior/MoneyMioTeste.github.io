@@ -1,0 +1,48 @@
+#lgpd { 
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    background: linear-gradient(180deg, #5bc5f0 0%, #2e81b5 100%); z-index: 100; 
+}
+
+#lgpd.show {
+    display: block; 
+}
+
+#lgpd p, #lgpd a { 
+    color: #fff; 
+    margin: 0; 
+}
+
+#lgpd > div { 
+    width: 100%; 
+    max-width: 1140px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    padding: 1.5rem 1rem; 
+}
+
+#lgpd > div > .copy { 
+    width: 75%; 
+}
+
+#lgpd > div > .botao { 
+    display: flex; justify-content: center; align-items: center; width: 25%;
+}
+
+#lgpd > div > .botao > p { 
+    border: 1px solid #dee2e6; 
+    padding: .5rem; 
+    border-radius: 0.25rem; 
+    cursor: pointer; 
+}
+
+@media (max-width: 769px) {
+    #lgpd > div > .copy, #lgpd > div > .botao { 
+        width: 100%; 
+    }
+    #lgpd > div > .botao { 
+        margin-top: 1.5rem; 
+    }
+}
