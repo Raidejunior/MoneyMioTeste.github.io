@@ -8,24 +8,30 @@
 
     <!-- meta tags e links -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href=".././imagens/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../imagens/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../imagens/favicon-16x16.png">
     <link rel="manifest" href="../../manifest/site.webmanifest">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="/geralstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Rubik" rel="stylesheet">
 
-
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.maskMoney.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script src="js/script.js"></script>
 
 </head>
 
 
 
-<body ng-app="" class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden ng-scope">
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
 
     <!--  <div ng-include="'app/views/template/lgpd.html'" include-replace="" class="ng-scope" style>
         <div ng-controller="autorizarlgpd" class="ng-scope">
@@ -46,18 +52,179 @@
             </div>
         </div>
     </div> -->
+    <div class="wrapper flex-col hide-sm" style="background: white;">
+        <div id="wrapper-header" class="wrapper-header d-flex align-center">
+            <div id="div-wrapper-header" class="container d-flex align-center" style="height:32px;">
+                <img src="imagens/wrapper_header_image.png" alt="Logo MoneyMio" height="32">
+            </div>
+        </div>
 
-    <div id="wrapper-header" class="wrapper-header d-flex align-center">
-        <div id="div-wrapper-header" class="container d-flex align-center" style="height:32px;">
-            <img src="imagens/wrapper_header_image.png" alt="Logo MoneyMio" height="32">
+        <div class="container">
+            <div class="columns">
+                <div class="column col-6 col-xl-5 mb-6">
+                    <div class="container pt-8 pl-4">
+                        <form name="formSimulacaoWeb" method="POST">
+                            <div class="columns">
+                                <div class="column col-12">
+
+                                    <a href="#" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                        <img height="36" src="imagens/left-arrow-blue.svg">
+                                    </a>
+                                    <h4 class="text-bold text-purple mt-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                        Agradecemos o interesse em nossa empresa.
+                                    </h4>
+                                    <h5 class="text-bold text-purple mt-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                        Agora basta preencher os dados abaixo para realizar sua simulação de empréstimo!
+                                    </h5>
+
+                                </div>
+                            </div>
+
+
+                            <div class="columns mt-4" name="divValorImovel" id="divValorImovel">
+                                <div class="column col-auto">
+                                    <div class="icon-image">
+                                        <img src="imagens/hand-blue.png">
+                                    </div>
+                                </div>
+                                <div class="column col-8">
+                                    <label class="form-label" name="lblValorSolicitado" id="lblValorSolicitado">
+
+                                        <strong class="text-primary d-block mb-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                            Valor do empréstimo <span class="text-error">*</span>
+                                        </strong>
+
+                                        <input type="text" class="form-input form-purple" placeholder="R$ 50.000,00" name="ValorSolicitado" id="ValorSolicitado" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ "/>
+
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="columns mt-4 d-none" name="divSimularEmprestimo" id="divSimularEmprestimo">
+
+                                <div class="column col-auto">
+                                    <div class="icon-image">
+                                        <img src="imagens/house-blue.png">
+                                    </div>
+                                </div>
+
+                                <div class="column col-8">
+                                    <label class="form-label">
+
+                                        <strong class="text-primary d-block mb-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                            Valor do imóvel <span class="text-error">*</span>
+                                        </strong>
+
+                                        <input type="text" class="form-input form-purple" placeholder="R$ 250.000,00" name="ValorImovel" id="ValorImovel" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ "/>
+
+                                    </label>
+
+                                    <div class="mt-6 d-none" name="divButtonSubmit" id="divButtonSubmit">
+
+                                        <button class="btn btn-primary btn-round shadow-1" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                            <div></div>
+                                            Simular empréstimo
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="container ">
-        <div class="columns">
-            <!--Upload de documentos-->
-            <!--<div class="" ng-include src="'app/views/simulacao/uploadDocumentos.html'"></div>-->
+    <!-- Layout Mobile -->
 
+    <div class="wrapper o-hidden bg-white show-sm">
+        <div class="wrapper-header d-flex align-center justify-center">
+            <a class="d-flex" href="#">
+                <img src="imagens/wrapper_header_image.png" height="32">
+            </a>
+        </div>
+
+        <div class="container o-auto p-4">
+            <form name="formSimulacaoMobile">
+
+                <div class="columns mt-4">
+                    <div class="column col-12 d-flex flex-col align-center">
+                        <h4 class="text-bold text-center text-purple" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                            Agradecemos o interesse em nossa empresa.
+                        </h4>
+                        <h5 class="text-bold text-center text-purple" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                            Agora basta preencher os dados abaixo para realizar sua simulação de empréstimo!
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="columns mt-8" name="divValorImovelSM" id="divValorImovelSM">
+                    <div class="column col-auto">
+                        <div class="icon-image">
+                            <img src="imagens/hand-blue.png">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label class="form-label" name="lblValorSolicitadoSM" id="lblValorSolicitadoSM">
+                            <strong class="text-primary d-block mb-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                Valor do empréstimo <span class="text-error">*</span>
+                            </strong>
+                            <input type="text" class="form-input form-purple" placeholder="R$ 50.000,00" name="ValorSolicitadoSM" id="ValorSolicitadoSM" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ ">
+                            <div class="form-input-hint">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="columns mt-4 d-none" name="divSimularEmprestimoSM" id="divSimularEmprestimoSM">
+                    <div class="column col-auto">
+                        <div class="icon-image">
+                            <img src="imagens/house-blue.png">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label class="form-label">
+                            <strong class="text-primary d-block mb-2" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                                Valor do imóvel <span class="text-error">*</span>
+                            </strong>
+                            <input type="text" class="form-input form-purple" placeholder="R$ 250.000,00" name="ValorImovelSM" id="ValorImovelSM" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ ">
+                            <div class="form-input-hint">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="columns mt-6 d-none" name="divButtonSubmitSM" id="divButtonSubmitSM">
+                    <div class="column text-center">
+                        <a class="btn btn-thick btn-round mr-3" href="#">
+                            Voltar
+                        </a>
+                        <button class="btn btn-primary btn-round shadow-1" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;">
+                            Simular <span class="hide-xxs">empréstimo</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container ">
+        <div class="columns">
+            
             <div class="column col-6 col-xl-5 mb-6">
                 <div class="container pt-8 pl-4">
                     <form novalidate="" name="formSimulacaoWeb" class="ng-valid-maxlength ng-invalid ng-dirty ng-valid-parse ng-invalid-validar-min ng-valid-required" style="">
@@ -126,90 +293,7 @@
         </div>
     </div>
     </div>
-    <div class="wrapper o-hidden bg-white show-sm ng-scope">
-        <div class="wrapper-header d-flex align-center justify-center">
-            <a ui-sref="login" class="d-flex" href="#!/login">
-                <img src="imagens/wrapper_header_image.png" height="32">
-            </a>
-        </div>
-        <div class="container o-auto p-4">
-            <form novalidate="" name="formSimulacaoMobile" class="ng-pristine ng-invalid ng-valid-maxlength ng-invalid-validar-min ng-valid-required" style="">
-                <!--Upload de documentos-->
-                <!--<div class="" ng-include src="'app/views/simulacao/uploadDocumentos.html'"></div>-->
-
-                <div class="columns mt-4">
-                    <div class="column col-12 d-flex flex-col align-center">
-                        <h4 class="text-bold text-center text-purple">
-                            Agradecemos o interesse em nossa empresa.
-                        </h4>
-                        <h5 class="text-bold text-center text-purple">
-                            Agora basta preencher os dados abaixo para realizar sua simulação de empréstimo!
-                        </h5>
-                    </div>
-                </div>
-                <div class="columns mt-8 js-fade">
-                    <div class="column col-auto">
-                        <div class="icon-image">
-                            <img src="#">
-                        </div>
-                    </div>
-                    <div class="column">
-                        <label class="form-label">
-                        <strong class="text-primary d-block mb-2">
-                            Valor do empréstimo <span class="text-error">*</span>
-                        </strong>
-                        <input type="text" class="form-input form-purple js-money js-required ng-pristine ng-untouched ng-invalid ng-valid-maxlength ng-not-empty ng-valid-required ng-invalid-validar-min" placeholder="R$ 50.000,00" name="ValorSolicitado" id="ValorSolicitado" ng-model="model.ValorSolicitado" ui-money-mask="" autocomplete="off" inputmode="numeric" maxlength="16" required="" ng-keyup="changeScroll($event)" validar-min="50000" ng-class="{ 'is-error' : !formSimulacaoMobile.ValorSolicitado.$valid &amp;&amp; formSimulacaoMobile.ValorSolicitado.$dirty }" style="">
-                        <div class="form-input-hint ng-hide" ng-show="formSimulacaoMobile.ValorSolicitado.$dirty">
-                            <p class="mb-0 ng-hide" ng-show="formSimulacaoMobile.ValorSolicitado.$error.required" style="">O valor é obrigatório.</p>
-                            <p class="mb-0 ng-binding" ng-show="formSimulacaoMobile.ValorSolicitado.$error.validarMin" style="">O valor mínimo é R$ 50.000,00.</p>
-                        </div>
-                    </label>
-                    </div>
-                </div>
-                <div class="columns mt-4 js-fade d-none">
-                    <div class="column col-auto">
-                        <div class="icon-image">
-                            <img src="#">
-                        </div>
-                    </div>
-                    <div class="column">
-                        <label class="form-label">
-                        <strong class="text-primary d-block mb-2">
-                            Valor do imóvel <span class="text-error">*</span>
-                        </strong>
-                        <input type="text" class="form-input form-purple js-money js-required ng-pristine ng-untouched ng-invalid ng-valid-maxlength ng-not-empty ng-valid-required ng-invalid-validar-min" placeholder="R$ 250.000,00" name="ValorImovel" id="ValorImovel" ng-model="model.ValorImovel" ui-money-mask="" autocomplete="off" inputmode="numeric" maxlength="16" required="" ng-keyup="changeScroll($event)" validar-min="250000" ng-class="{ 'is-error' : !formSimulacaoMobile.ValorImovel.$valid &amp;&amp; formSimulacaoMobile.ValorImovel.$dirty }" style="">
-                        <div class="form-input-hint ng-hide" ng-show="formSimulacaoMobile.ValorImovel.$dirty">
-                            <p class="mb-0 ng-hide" ng-show="formSimulacaoMobile.ValorImovel.$error.required" style="">O valor é obrigatório.</p>
-                            <p class="mb-0 ng-binding" ng-show="formSimulacaoMobile.ValorImovel.$error.validarMin" style="">O valor mínimo é R$ 250.000,00.</p>
-                        </div>
-                    </label>
-                    </div>
-                </div>
-                <div class="columns mt-6 js-fade d-none">
-                    <div class="column text-center">
-                        <a class="btn btn-thick btn-round mr-3" ui-sref="login" href="#!/login">
-                        Voltar
-                    </a>
-                        <button class="btn btn-primary btn-round shadow-1 js-start ld-ext-left" ng-class="{'running': formSimulacaoMobile.$submitted || loading }" ng-disabled="!formSimulacaoMobile.$valid || formSimulacaoMobile.$submitted || loading" ng-click="simular(formSimulacaoMobile)"
-                            disabled="disabled" style="">
-                        <div class="ld ld-ring ld-spin"></div>
-                        Simular <span class="hide-xxs">empréstimo</span>
-                    </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
-
+ -->
 </body>
-
-<script src="script.js"></script>
 
 </html>

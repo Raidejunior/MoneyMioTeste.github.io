@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="pt-br" translate="no">
+
+<head>
+
+    <title>MoneyMio</title>
+
+    <!-- meta tags e links -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/imagens/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imagens/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/imagens/favicon-16x16.png">
+    <link rel="manifest" href="/manifest/site.webmanifest">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/geralstyle.css">
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.maskMoney.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script src="js/script.js"></script>
+
+</head>
+
+
+
+<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+
+    <div class="wrapper flex-col hide-sm" style="background: white;">
+        <div id="wrapper-header" class="wrapper-header d-flex align-center">
+            <div id="div-wrapper-header" class="container d-flex align-center" style="height:32px;">
+                <img src="imagens/wrapper_header_image.png" alt="Logo MoneyMio" height="32">
+            </div>
+        </div>
+
+        <div class="columns columns bg-white flex-1 o-auto p-relative m-0">
+            <div class="col-6">
+                <a href="#">
+                    <img src="../assets/icons/left-arrow-blue.svg" height="36">
+                </a>
+                <ul class="step step-cashme my-0 mx-auto" style="padding-left:15%">
+                    <li class="step-item active">
+                        <a href="javascript:;" class="tooltip sm" data-tooltip="Meu Empréstimo" ng-click="setStep(1)">1</a>
+                    </li>
+                    <li class="step-item">
+                        <a href="javascript:;" class="tooltip sm" data-tooltip="Meus Dados" ng-click="setStep(2)">2</a>
+                    </li>
+                    <li class="step-item">
+                        <a href="javascript:;" class="tooltip sm" data-tooltip="Meu Imóvel" ng-click="setStep(3)">3</a>
+                    </li>
+                    <li class="step-item">
+                        <a href="javascript:;" class="tooltip sm" data-tooltip="Solicitar Empréstimo" ng-click="setStep(4)">4</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Passo 1-->
+
+            <div class="column simulador-step">
+                <div class="columns">
+                    <div class="column col-8 mt-16">
+                        <div class="container pt-8 pl-8">
+                            <form name="formWebMeuEmprestimo">
+                                <div class="columns">
+                                    <h4 class="column text-bold text-purple">Meu Empréstimo</h4>
+                                </div>
+                                <div class="columns mt-4">
+                                    <div class="column col-auto">
+                                        <div class="icon-image">
+                                            <img src="imagens/hand-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column col-4 col-md-10 mb-2">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Valor do empréstimo <span class="text-error">*</span>
+                                    </strong>
+                                    <input type="text" id="emprestimoValorSolicitado" name="emprestimoValorSolicitado" class="form-input form-purple" placeholder="R$ 50.000,00" autocomplete="off" maxlength="16" inputmode="numeric" validar-min="50000">
+                                    <div class="form-input-hint">
+                                        <p class="mb-0">O valor é obrigatório.</p>
+                                        <p class="mb-0">O valor mínimo é R$ 50.000,00.</p>
+                                    </div>
+                                </label>
+                                    </div>
+                                    <div class="column col-auto">
+                                        <div class="icon-image">
+                                            <img src="imagens/house-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column col-4 col-md-10">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Valor do imóvel <span class="text-error">*</span>
+                                    </strong>
+                                    <input type="text" name="emprestimoValorImovel" id="emprestimoValorImovel" class="form-input form-purple" placeholder="R$ 250.000,00" autocomplete="off" maxlength="16" inputmode="numeric" validar-min="250000">
+                                    <div class="form-input-hint">
+                                        <p class="mb-0">O valor é obrigatório.</p>
+                                        <p class="mb-0">O valor mínimo é R$ 250.000,00.</p>
+                                    </div>
+                                </label>
+                                    </div>
+                                </div>
+                                <div class="columns mt-4">
+                                    <div class="column col-auto">
+                                        <div class="icon-image">
+                                            <img src="imagens/payment-day-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column col-9">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Em quantas parcelas?
+                                    </strong>
+                                    <div style="position: relative;">
+                                        <span><span><span tabindex="0"></span><span style="visibility: visible;">36</span><span style="visibility: visible;">144</span><span style="visibility: hidden;">0</span><span style="visibility: hidden;">0</span><span style="left: 70.0631%;">120</span></span><span style="width: 92.0702%; left: 3.8649%;"><span style="left: 0%"></span><span style="left: 0%; margin-left: -3.38153%;">36</span><span class="small" style="left: 7.4074074074074066%"></span><span class="small" style="left: 3.7037037037037033%"></span><span style="left: 11.11111111111111%"></span><span style="left: 11.1111%; visibility: visible; margin-left: -3.38153%;">48</span><span class="small" style="left: 18.51851851851852%"></span><span class="small" style="left: 14.814814814814813%"></span><span style="left: 22.22222222222222%"></span><span style="left: 22.2222%; visibility: visible; margin-left: -3.38153%;">60</span><span style="left: 29.629629629629626%"></span><span style="left: 25.925925925925924%"></span><span style="left: 33.33333333333333%"></span><span style="left: 33.3333%; visibility: visible; margin-left: -3.38153%;">72</span><span style="left: 40.74074074074074%"></span><span class="small" style="left: 37.03703703703703%"></span><span style="left: 44.44444444444444%"></span><span style="left: 44.4444%; margin-left: -3.38153%;">84</span><span class="irs-grid-pol small" style="left: 51.851851851851855%"></span><span class="irs-grid-pol small" style="left: 48.148148148148145%"></span><span class="irs-grid-pol" style="left: 55.55555555555556%"></span><span class="irs-grid-text js-grid-text-5" style="left: 55.5556%; visibility: visible; margin-left: -3.38153%;">96</span><span class="small" style="left: 62.962962962962955%"></span><span class="small" style="left: 59.25925925925926%"></span><span style="left: 66.66666666666666%"></span><span style="left: 66.6667%; visibility: visible; margin-left: -4.57581%;">108</span><span class="small" style="left: 74.07407407407406%"></span><span class="small" style="left: 70.37037037037037%"></span><span style="left: 77.77777777777777%"></span><span style="left: 77.7778%; visibility: visible; margin-left: -4.57581%;">120</span><span class="small" style="left: 85.18518518518518%"></span><span class="small" style="left: 81.48148148148148%"></span><span style="left: 88.88888888888889%"></span><span style="left: 88.8889%; margin-left: -4.57581%;">132</span><span class="small" style="left: 96.29629629629629%"></span><span class="small" style="left: 92.5925925925926%"></span><span style="left: 100%"></span><span style="left: 100%; visibility: visible; margin-left: -4.57581%;">144</span></span><span style="left: 0px; width: 75.5751%;"></span><span style="display: none;"></span><span style="left: 71.6102%;"><i></i><i></i><i></i></span></span><input name="qtd_parcelas" tabindex="-1" readonly="">
+                                    </div>
+                                </label>
+
+                                        <div class="column col-9 mt-5">
+                                            <label class="form-label">
+                                        <strong class="text-primary d-block mb-2">
+                                            Amortização
+                                        </strong>
+                                    </label>
+                                            <div class="d-flex">
+                                                <!-- ngRepeat: item in listaTabela --><label class="form-radio form-purple ml-4 ng-binding ng-scope" ng-repeat="item in listaTabela">
+                                            <input type="radio" name="simulacao_amortizacao" ng-value="item.Value" ng-change="atualizarPrazoSac(formWebMeuEmprestimo)" ng-model="model.SistemaAmortizacao" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="990000000">
+                                            <i class="form-icon"></i> PRICE
+                                        </label>
+                                                <!-- end ngRepeat: item in listaTabela --><label class="form-radio form-purple ml-4 ng-binding ng-scope" ng-repeat="item in listaTabela">
+                                            <input type="radio" name="simulacao_amortizacao" ng-value="item.Value" ng-change="atualizarPrazoSac(formWebMeuEmprestimo)" ng-model="model.SistemaAmortizacao" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="990000001">
+                                            <i class="form-icon"></i> SAC
+                                        </label>
+                                                <!-- end ngRepeat: item in listaTabela -->
+                                            </div>
+
+                                            <button class="btn btn-primary btn-round mt-8 js-next ld-ext-left" ng-class="{'running': formWebMeuEmprestimo.$submitted || loading }" ng-disabled="!formWebMeuEmprestimo.$valid || formWebMeuEmprestimo.$submitted || loading || validarCalculo" ng-click="avancar(formWebMeuEmprestimo)"
+                                                style="">
+                                        <div class="ld ld-ring ld-spin"></div>
+                                        Solicitar empréstimo
+                                    </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="column col-4 simulador-info">
+                        <!-- ngIf: !resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                        <!-- ngIf: !!resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                        <div class="text-center ng-scope" ng-if="!!resultado.ValorPrimeiraParcelaComSeguro.Value" style="">
+                            <h5>Valor da primeira parcela:</h5>
+                            <h1 class="mb-0 ng-binding ng-isolate-scope" counter="" value="ValorPrimeiraParcelaComSeguro" to="resultado.ValorPrimeiraParcelaComSeguro.Value" duration="800" effect="'easeOutQuint'">
+                                <sup>R$</sup>903,84
+                            </h1>
+                        </div>
+                        <!-- end ngIf: !!resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                        <hr>
+                        <!-- ngIf: !!resultado.RendaMinima.Value -->
+                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.RendaMinima.Value" style="">
+                            <legend>Renda necessária</legend>
+                            <div class="text-center ng-binding">R$ 2.585,47</div>
+                        </fieldset>
+                        <!-- end ngIf: !!resultado.RendaMinima.Value -->
+                        <!-- ngIf: !!resultado.TaxaJurosMes && !!resultado.IndiceIndexador.Value -->
+                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.TaxaJurosMes &amp;&amp; !!resultado.IndiceIndexador.Value">
+                            <legend>Taxa de juros</legend>
+                            <div class="text-center ng-binding">0,79% a.m. + IPCA</div>
+                        </fieldset>
+                        <!-- end ngIf: !!resultado.TaxaJurosMes && !!resultado.IndiceIndexador.Value -->
+                        <!-- ngIf: !!resultado.SistemaAmortizacao.Value -->
+                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.SistemaAmortizacao.Value">
+                            <legend>Sistema de Amortização</legend>
+                            <div class="text-center ng-binding">Tabela Price</div>
+                        </fieldset>
+                        <!-- end ngIf: !!resultado.SistemaAmortizacao.Value -->
+                        <div class="text-center pt-5">
+                            <small class="ng-binding">A taxa de juros varia a partir de 0.79% ao mês, dependendo da análise de crédito.</small><br>
+                            <small>A parcela apresentada já inclui os custos aproximados com avaliação do imóvel, seguros e custos cartoriais.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layout Mobile -->
+
+            <div class="wrapper bg-white d-flex flex-col o-auto show-sm ng-scope">
+                <div class="wrapper-header d-flex align-center justify-center">
+                    <a ui-sref="login" class="d-flex" href="#!/login">
+                        <img src="../assets/logo-cashme.png" height="32">
+                    </a>
+                </div>
+                <div class="container">
+                    <div class="columns mt-6" style="height: auto;">
+                        <div class="column">
+                            <ul class="step step-cashme mx-auto">
+                                <li class="step-item active">
+                                    <a href="javascript:;">1</a>
+                                </li>
+                                <li class="step-item">
+                                    <a href="javascript:;">2</a>
+                                </li>
+                                <li class="step-item">
+                                    <a href="javascript:;">3</a>
+                                </li>
+                                <li class="step-item">
+                                    <a href="javascript:;">4</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Passo 1-->
+
+                    <div class="columns simulador-step">
+                        <div class="column">
+                            <form name="formMobileMeuEmprestimo" novalidate="" class="ng-pristine ng-valid ng-valid-maxlength ng-valid-validar-min">
+                                <div class="columns mx-2 mt-6">
+                                    <div class="column">
+                                        <h4 class="text-bold text-center text-purple m-0">
+                                            Meu empréstimo
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="columns mx-2 mt-6 js-fade">
+                                    <div class="column col-auto">
+                                        <div class="icon-image icon-image-sm">
+                                            <img src="../assets/icons/hand-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Valor do empréstimo <span class="text-error">*</span>
+                                    </strong>
+                                    <input type="text" id="emprestimoValorSolicitado" name="emprestimoValorSolicitado" class="form-input form-purple js-money js-required ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength ng-valid-validar-min" placeholder="R$ 50.000,00" autocomplete="off" inputmode="numeric" maxlength="16" ui-money-mask="" validar-min="50000" ng-class="{ 'is-error' : !formMobileMeuEmprestimo.emprestimoValorSolicitado.$valid &amp;&amp; formMobileMeuEmprestimo.emprestimoValorSolicitado.$dirty }" ng-model="model.ValorSolicitado" ng-change="atualizaSimulacao(formMobileMeuEmprestimo)">
+                                    <div class="form-input-hint ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorSolicitado.$dirty">
+                                        <p class="mb-0 ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorSolicitado.$error.required">O valor é obrigatório.</p>
+                                        <p class="mb-0 ng-binding ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorSolicitado.$error.validarMin">O valor mínimo é R$ 50.000,00.</p>
+                                    </div>
+                                </label>
+                                    </div>
+                                </div>
+                                <div class="columns mx-2 mt-4 js-fade">
+                                    <div class="column col-auto">
+                                        <div class="icon-image icon-image-sm">
+                                            <img src="../assets/icons/house-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Valor do imóvel <span class="text-error">*</span>
+                                    </strong>
+                                    <input type="text" name="emprestimoValorImovel" id="emprestimoValorImovel" class="form-input form-purple js-money js-required ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength ng-valid-validar-min" placeholder="R$ 250.000,00" autocomplete="off" inputmode="numeric" maxlength="16" ui-money-mask="" ng-model="model.ValorImovel" ng-change="atualizaSimulacao(formMobileMeuEmprestimo)" validar-min="250000" ng-class="{ 'is-error' : !formMobileMeuEmprestimo.emprestimoValorImovel.$valid &amp;&amp; formMobileMeuEmprestimo.emprestimoValorImovel.$dirty }">
+                                    <div class="form-input-hint ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorImovel.$dirty">
+                                        <p class="mb-0 ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorImovel.$error.required">O valor é obrigatório.</p>
+                                        <p class="mb-0 ng-binding ng-hide" ng-show="formMobileMeuEmprestimo.emprestimoValorImovel.$error.validarMin">O valor mínimo é R$ 250.000,00.</p>
+                                    </div>
+                                </label>
+                                    </div>
+                                </div>
+                                <div class="columns mt-4 js-fade">
+                                    <div class="column ml-4 col-auto">
+                                        <div class="icon-image icon-image-sm">
+                                            <img src="../assets/icons/payment-day-blue.png">
+                                        </div>
+                                    </div>
+                                    <div class="column mr-10">
+                                        <label class="form-label">
+                                    <strong class="text-primary d-block mb-2">
+                                        Em quantas parcelas?
+                                    </strong>
+                                    <div style="position: relative;">
+                                        <span class="irs irs--round js-irs-1 irs-with-grid"><span class="irs"><span class="irs-line" tabindex="0"></span><span class="irs-min" style="visibility: visible;">36</span><span class="irs-max" style="visibility: visible;">144</span><span class="irs-from" style="visibility: hidden;">0</span><span class="irs-to" style="visibility: hidden;">0</span><span class="irs-single" style="left: 73.0955%;">120</span></span><span class="irs-grid" style="width: 95.1872%; left: 2.30642%;"><span class="irs-grid-pol" style="left: 0%"></span><span class="irs-grid-text js-grid-text-0" style="left: 0%; margin-left: -2.05235%;">36</span><span class="irs-grid-pol small" style="left: 7.4074074074074066%"></span><span class="irs-grid-pol small" style="left: 3.7037037037037033%"></span><span class="irs-grid-pol" style="left: 11.11111111111111%"></span><span class="irs-grid-text js-grid-text-1" style="left: 11.1111%; visibility: visible; margin-left: -2.05235%;">48</span><span class="irs-grid-pol small" style="left: 18.51851851851852%"></span><span class="irs-grid-pol small" style="left: 14.814814814814813%"></span><span class="irs-grid-pol" style="left: 22.22222222222222%"></span><span class="irs-grid-text js-grid-text-2" style="left: 22.2222%; visibility: visible; margin-left: -2.05235%;">60</span><span class="irs-grid-pol small" style="left: 29.629629629629626%"></span><span class="irs-grid-pol small" style="left: 25.925925925925924%"></span><span class="irs-grid-pol" style="left: 33.33333333333333%"></span><span class="irs-grid-text js-grid-text-3" style="left: 33.3333%; visibility: visible; margin-left: -2.05235%;">72</span><span class="irs-grid-pol small" style="left: 40.74074074074074%"></span><span class="irs-grid-pol small" style="left: 37.03703703703703%"></span><span class="irs-grid-pol" style="left: 44.44444444444444%"></span><span class="irs-grid-text js-grid-text-4" style="left: 44.4444%; margin-left: -2.05235%;">84</span><span class="irs-grid-pol small" style="left: 51.851851851851855%"></span><span class="irs-grid-pol small" style="left: 48.148148148148145%"></span><span class="irs-grid-pol" style="left: 55.55555555555556%"></span><span class="irs-grid-text js-grid-text-5" style="left: 55.5556%; visibility: visible; margin-left: -2.05235%;">96</span><span class="irs-grid-pol small" style="left: 62.962962962962955%"></span><span class="irs-grid-pol small" style="left: 59.25925925925926%"></span><span class="irs-grid-pol" style="left: 66.66666666666666%"></span><span class="irs-grid-text js-grid-text-6" style="left: 66.6667%; visibility: visible; margin-left: -2.77719%;">108</span><span class="irs-grid-pol small" style="left: 74.07407407407406%"></span><span class="irs-grid-pol small" style="left: 70.37037037037037%"></span><span class="irs-grid-pol" style="left: 77.77777777777777%"></span><span class="irs-grid-text js-grid-text-7" style="left: 77.7778%; visibility: visible; margin-left: -2.77719%;">120</span><span class="irs-grid-pol small" style="left: 85.18518518518518%"></span><span class="irs-grid-pol small" style="left: 81.48148148148148%"></span><span class="irs-grid-pol" style="left: 88.88888888888889%"></span><span class="irs-grid-text js-grid-text-8" style="left: 88.8889%; margin-left: -2.77719%;">132</span><span class="irs-grid-pol small" style="left: 96.29629629629629%"></span><span class="irs-grid-pol small" style="left: 92.5925925925926%"></span><span class="irs-grid-pol" style="left: 100%"></span><span class="irs-grid-text js-grid-text-9" style="left: 100%; visibility: visible; margin-left: -2.77719%;">144</span></span><span class="irs-bar irs-bar--single" style="left: 0px; width: 76.4409%;"></span><span class="irs-shadow shadow-single" style="display: none;"></span><span class="irs-handle single" style="left: 74.0345%;"><i></i><i></i><i></i></span></span><input name="qtd_parcelas" class="js-range-slider irs-hidden-input" tabindex="-1" readonly="">
+                                    </div>
+                                </label>
+                                        <div class="column col-12 mt-5">
+                                            <label class="form-label">
+                                        <strong class="text-primary d-block mb-2">
+                                            Amortização
+                                        </strong>
+                                    </label>
+                                            <div class="d-flex">
+                                                <!-- ngRepeat: item in listaTabela --><label class="form-radio form-purple ml-4 ng-binding ng-scope" ng-repeat="item in listaTabela">
+                                            <input type="radio" name="simulacao_amortizacao" ng-value="item.Value" ng-change="atualizarPrazoSac(formWebMeuEmprestimo)" ng-model="model.SistemaAmortizacao" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="990000000">
+                                            <i class="form-icon"></i> PRICE
+                                        </label>
+                                                <!-- end ngRepeat: item in listaTabela --><label class="form-radio form-purple ml-4 ng-binding ng-scope" ng-repeat="item in listaTabela">
+                                            <input type="radio" name="simulacao_amortizacao" ng-value="item.Value" ng-change="atualizarPrazoSac(formWebMeuEmprestimo)" ng-model="model.SistemaAmortizacao" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="990000001">
+                                            <i class="form-icon"></i> SAC
+                                        </label>
+                                                <!-- end ngRepeat: item in listaTabela -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column col-12 px-6 mt-10 d-flex flex-col align-center">
+                                        <a class="btn btn-primary btn-round btn-large d-flex align-center shadow-1 js-scroll" ng-click="botaoScrollVerDetalhe()">
+                                            <span>Veja o resultado</span>
+                                            <img height="16" class="ml-2 mCS_img_loaded" src="../assets/icons/bottom-arrow-white.svg">
+                                        </a>
+                                    </div>
+                                    <div class="column col-12 mt-10 simulador-info">
+                                        <!-- ngIf: !resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                                        <!-- ngIf: !!resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                                        <div class="text-center ng-scope" ng-if="!!resultado.ValorPrimeiraParcelaComSeguro.Value" style="">
+                                            <h5>Valor da primeira parcela:</h5>
+                                            <h1 class="mb-0 ng-binding ng-isolate-scope" counter="" value="ValorPrimeiraParcelaComSeguro" to="resultado.ValorPrimeiraParcelaComSeguro.Value" duration="2000" effect="'easeOutQuint'">
+                                                <sup>R$</sup>903,84
+                                            </h1>
+                                        </div>
+                                        <!-- end ngIf: !!resultado.ValorPrimeiraParcelaComSeguro.Value -->
+                                        <hr>
+
+                                        <!-- ngIf: !!resultado.RendaMinima.Value -->
+                                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.RendaMinima.Value" style="">
+                                            <legend>Renda necessária</legend>
+                                            <div class="text-center ng-binding">R$ 2.585,47</div>
+                                        </fieldset>
+                                        <!-- end ngIf: !!resultado.RendaMinima.Value -->
+                                        <!-- ngIf: !!resultado.TaxaJurosMes && !!resultado.IndiceIndexador.Value -->
+                                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.TaxaJurosMes &amp;&amp; !!resultado.IndiceIndexador.Value">
+                                            <legend>Taxa de juros</legend>
+                                            <div class="text-center ng-binding">0,79% a.m. + IPCA2</div>
+                                        </fieldset>
+                                        <!-- end ngIf: !!resultado.TaxaJurosMes && !!resultado.IndiceIndexador.Value -->
+                                        <!-- ngIf: !!resultado.SistemaAmortizacao.Value -->
+                                        <fieldset class="cashme-fieldset ng-scope" ng-if="!!resultado.SistemaAmortizacao.Value">
+                                            <legend>Sistema de Amortização</legend>
+                                            <div class="text-center ng-binding">Tabela Price</div>
+                                        </fieldset>
+                                        <!-- end ngIf: !!resultado.SistemaAmortizacao.Value -->
+                                        <div class="text-center pt-5"><small>Parcela apresentada já incluiu custos aproximados de avaliação do imóvel e custos cartorárias.</small></div>
+                                        <div class="mt-10 text-center">
+                                            <button style="border-color:white" class="btn btn-thick btn-round bg-none text-white mr-3 js-back">
+                                        Voltar
+                                    </button>
+                                            <button style="border-color: white;" class="btn btn-round shadow-1 js-next ld-ext-left" ng-class="{'running': formMobileMeuEmprestimo.$submitted || loading }" ng-disabled="!formMobileMeuEmprestimo.$valid || formMobileMeuEmprestimo.$submitted || loading || validarCalculo"
+                                                ng-click="avancar(formMobileMeuEmprestimo)">
+                                        <div class="ld ld-ring ld-spin"></div>
+                                        Simular <span class="hide-xxs">empréstimo</span>
+                                    </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
