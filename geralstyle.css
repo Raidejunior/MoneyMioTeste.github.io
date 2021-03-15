@@ -5502,18 +5502,18 @@ hr {
     top: -1rem;
 }
 
-.cashme-fieldset {
+.moneymio-fieldset {
     border: 1.2px solid rgba(0, 0, 0, .15);
     border-radius: 8px;
     font-size: .8rem;
     padding: .25rem 1rem .5rem;
 }
 
-.cashme-fieldset:last-of-type {
+.moneymio-fieldset:last-of-type {
     margin-bottom: 0;
 }
 
-.cashme-fieldset legend {
+.moneymio-fieldset legend {
     font-size: .7rem;
     margin-bottom: 0;
     padding: 0 .4rem;
@@ -5522,13 +5522,13 @@ hr {
     text-overflow: ellipsis;
 }
 
-.cashme-fieldset input {
+.moneymio-fieldset input {
     border: none;
     padding: .25em;
     text-align: center;
 }
 
-.cashme-fieldset select {
+.moneymio-fieldset select {
     border: none;
 }
 
@@ -5641,33 +5641,33 @@ hr {
     padding: .35rem .6rem;
 }
 
-.table-cashme thead {
+.table-moneymio thead {
     background: #b9b9b9;
     color: #fff;
 }
 
-.table-cashme td,
-.table-cashme th {
+.table-moneymio td,
+.table-moneymio th {
     border-bottom: none;
 }
 
-.table-cashme td:first-of-type,
-.table-cashme th:first-of-type {
+.table-moneymio td:first-of-type,
+.table-moneymio th:first-of-type {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-.table-cashme td:last-of-type,
-.table-cashme th:last-of-type {
+.table-moneymio td:last-of-type,
+.table-moneymio th:last-of-type {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-.table-cashme.table-striped tbody tr:nth-of-type(even) {
+.table-moneymio.table-striped tbody tr:nth-of-type(even) {
     background: #f2f2f2;
 }
 
-.table-cashme.table-striped tbody tr:nth-of-type(odd) {
+.table-moneymio.table-striped tbody tr:nth-of-type(odd) {
     background: none;
 }
 
@@ -5914,20 +5914,20 @@ hr {
     overflow-x: hidden;
 }
 
-.modal-cashme .modal-container {
+.modal-moneymio .modal-container {
     padding: 0;
     max-height: 95%;
     max-width: 90%;
 }
 
-.modal-cashme .modal-header {
+.modal-moneymio .modal-header {
     background: #49aaff;
     border-top-left-radius: .6rem;
     border-top-right-radius: .6rem;
     color: #fff;
 }
 
-.modal-cashme .modal-footer {
+.modal-moneymio .modal-footer {
     border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
@@ -5946,11 +5946,11 @@ hr {
     font-weight: bold;
 }
 
-.step-cashme {
+.step-moneymio {
     padding-left: calc(100%/4/4);
 }
 
-.step-cashme .step-item:not(:first-child)::before {
+.step-moneymio .step-item:not(:first-child)::before {
     background: none;
     border-top: 6px dotted #49aaff;
     top: 15px;
@@ -5958,7 +5958,7 @@ hr {
     width: calc(100% - 50px);
 }
 
-.step-cashme .step-item a {
+.step-moneymio .step-item a {
     align-items: center;
     border-radius: 18px;
     border: 2px solid #49aaff;
@@ -5971,21 +5971,21 @@ hr {
     width: 36px;
 }
 
-.step-cashme .step-item a::before {
+.step-moneymio .step-item a::before {
     display: none !important;
 }
 
-.step-cashme .step-item.active a,
-.step-cashme .step-item.active.active a::before {
+.step-moneymio .step-item.active a,
+.step-moneymio .step-item.active.active a::before {
     border-color: #49aaff;
 }
 
-.step-cashme .step-item.active~.step-item::before {
+.step-moneymio .step-item.active~.step-item::before {
     background: none;
     border-top-color: #d9d9d9;
 }
 
-.step-cashme .step-item.active~.step-item a {
+.step-moneymio .step-item.active~.step-item a {
     border-color: #d9d9d9;
 }
 
@@ -6838,7 +6838,7 @@ a.text-gray-light:visited {
     box-shadow: 0 .1rem .3rem rgba(26, 25, 25, .3);
 }
 
-.cashme-loader {
+.moneymio-loader {
     background: rgba(255, 255, 255, .8) url("../assets/logo-loader.gif") no-repeat center center;
     position: absolute;
     top: 0;
