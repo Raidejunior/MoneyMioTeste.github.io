@@ -44,7 +44,51 @@
     <div class='tuna-signup-container'>
         <div class='container'>
             <div class="row">
-                <div class='tuna-signup-left col-md-4 col-sm-4'>
+                <div id="simulador" class='tuna-signup-left col-md-4 col-sm-4  d-none'>
+                    <img class='tuna-signup-logo' src='imagens/logo-moneymio (2).png' alt="Moneymio" style="display: block;" />
+
+                    <div style="position: relative; top: 5%;">
+                        <label for="amount_amirol" class="control-label">Anualmente (R$): </label>
+                        <span class="help-text">Quanto você precisará pagar</span>
+
+
+                        <input type="hidden" id="amount_amirol" class="form-control">
+                        <!-- <p class="price lead" id="total"></p> -->
+                        <input class="price lead" name="totalprice" type="text" id="total" disabled="disabled" style="" />
+
+
+                        <label for="amount_amirol" class="control-label">Mensalmente (R$): </label>
+                        <span class="help-text">Quanto você precisará pagar</span>
+
+
+                        <input type="hidden" id="amount_amirol" class="form-control">
+                        <!-- <p class="price lead" id="total12"></p> -->
+                        <input class="price lead" name="totalprice12" type="text" id="total12" disabled="disabled" style="" />
+
+
+
+                        <label for="amount_amirol" class="control-label">Semanalmente (R$): </label>
+                        <span class="help-text">Quanto você precisará pagar</span>
+
+
+                        <input type="hidden" id="amount_amirol" class="form-control">
+                        <!-- <p class="price lead" id="total52"></p> -->
+                        <input class="price lead" name="totalprice52" type="text" id="total52" disabled="disabled" style="" />
+
+
+
+                        <div style="margin-top:30px"></div>
+                        <hr class="style">
+
+
+                        <img src="https://github.com/AmirolAhmad/Bootstrap-Calculator/blob/master/images/payment.png?raw=true" class="img-responsive payment" />
+                    </div>
+
+                    <!-- <p class="text-center" style="padding-top:10px;font-size:12px;color:#2c3e50;font-style:italic;">Created by <a href="https://twitter.com/AmirolAhmad" target="_blank">AmirolAhmad</a></p> -->
+                </div>
+
+
+                <div id="left-layout" class='tuna-signup-left col-md-4 col-sm-4'>
                     <img class='tuna-signup-logo' src='imagens/logo-moneymio (2).png' alt="Moneymio" />
                     <!-- <p>Agradecemos o interesse em nossa empresa</p> -->
                     <p class="tuna-trial">Preencha os dados abaixo para realizar sua simulação.</p>
@@ -90,19 +134,65 @@
                         <div class="step" id="data-step-id-2" data-step-id='2' style="top: 35%;">
 
                             <label class="formLabel" for="valoremprestimo" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
-                                Valor do empréstimo
-                            </label>
-                            <input type="text" class="formInput" id='valoremprestimo' name="valoremprestimo" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ " />
+                                    Valor do empréstimo
+                                </label>
+                            <input type="text" class="formInput" onkeyup="alteravalor()" id='valoremprestimo' name="valoremprestimo" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal=","
+                                data-prefix="R$ " />
                             <div class='help-error'><i class="icon icon-warning"></i> Valor do empréstimo é necessário!</div>
 
                             <label class="formLabel simularvalorimovel" for="valorimovel2" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
-                                Valor do Imóvel
-                            </label>
-                            <input type="text" class="formInput simularvalorimovel" id='valorimovel2' name="valorimovel2" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ "
-                            />
+                                    Valor do Imóvel
+                                </label>
+                            <input type="text" class="formInput simularvalorimovel" onkeyup="alteravalor()" id='valorimovel2' name="valorimovel2" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="."
+                                data-decimal="," data-prefix="R$ " />
                             <div class='help-error'><i class="icon icon-warning"></i> Valor do imóvel também é necessário! =)</div>
 
+
+
+                            <div class="cd-horizontal-timeline loaded">
+                                <h4 class="great">
+                                    Em quantas parcelas?
+                                </h4>
+                                <div class="timeline">
+                                    <div class="events-wrapper">
+                                        <div class="events" style="width: 800px;">
+                                            <ol>
+                                                <li><a href="#0" data-date="01/01/2017" class="older-event month" style="left: 20px;" id='36month'>36</a></li>
+                                                <li><a href="#0" data-date="10/01/2017" style="left: 25px;" class="older-event month" id='48month'>48</a></li>
+                                                <li><a href="#0" data-date="20/01/2017" style="left: 150px;" class="selected month active-month selected-month" id='60month'>60</a></li>
+                                                <li><a href="#0" data-date="10/02/2017" style="left: 250px;" class="month" id='72month'>72</a></li>
+                                                <li><a href="#0" data-date="20/02/2017" style="left: 325px;" class="month" id='84month'>84</a></li>
+                                                <li><a href="#0" data-date="15/03/2017" style="left: 400px;" class="month" id='96month'>96</a></li>
+                                                <li><a href="#0" data-date="25/03/2017" style="left: 475px;" class="month" id='108month'>108</a></li>
+                                                <li><a href="#0" data-date="10/04/2017" style="left: 550px;" class="month" id='120month'>120</a></li>
+                                                <li><a href="#0" data-date="00/05/2017" style="left: 675px;" class="month" id='132month'>132</a></li>
+                                                <li><a href="#0" data-date="15/05/2017" style="left: 750px;" class="month" id='144month'>144</a></li>
+                                            </ol>
+                                            <span class="filling-line" aria-hidden="true" style="transform: scaleX(0.281506);"></span>
+                                        </div>
+                                        <!-- .events -->
+                                    </div>
+                                    <!-- .events-wrapper -->
+                                    <ul class="cd-timeline-navigation">
+                                        <li><a href="#0" class="prev inactive">Prev</a></li>
+                                        <li><a href="#0" class="next">Next</a></li>
+                                    </ul>
+                                    <!-- .cd-timeline-navigation -->
+                                    <form class="form-horizontal form-pricing d-none" role="form" style="margin-top: 50px;">
+                                        <input name="month" type="hidden" id="month" value='60month' readonly="readonly" />
+                                        <div class="btn-group btn-group-justified">
+                                            <div class="btn-group btn-group-lg">
+                                                <button type="button" class="btn btn-primary btn-lg btn-block term active-term selected-term" id='monthly'>Mensal</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
                         </div>
+
+
                         <div class="step" id="data-step-id-3" data-step-id='3'>
                             <div class="step-label">[Radios] What is your gender?</div>
                             <label class="radio-inline"><input type="radio" value="MALE" name="tn_gender" checked> Male</label>
@@ -178,7 +268,7 @@
                                 <div class="form-group">
                                     <div class="col-md-8 col-sm-12 col-md-offset-4 col-sm-offset-0">
                                         <label class="checkbox-inline agreement">
-                                                <input id="agreement" name="agreement" type="checkbox"/>I agree to the <a href="#" target="_blank">terms of service</a>.
+                                                <input id="agreement" name="agreement" type="checkbox"/>Eu concordo com os <a href="#" target="_blank">termos de serviço</a>.
                                             </label>
                                     </div>
                                 </div>
@@ -194,10 +284,10 @@
                     </div>
                     <div class='button-container'>
                         <div>
-                            <a href="javascript:void(0)" id="btnClick" class="btn btn-white btn-rounded nextStep" tabindex="0">Next Step →</a>
-                            <span>or press "Enter"</span>
+                            <a href="javascript:void(0)" id="btnClick" class="btn btn-white btn-rounded nextStep" tabindex="0">Próximo passo →</a>
+                            <span>ou pressione "Enter"</span>
                         </div>
-                        <a href="javascript:void(0)" class='btn btn-white-transparent btn-rounded prevStep' tabindex="1">← Previous</a>
+                        <a href="javascript:void(0)" class='btn btn-white-transparent btn-rounded prevStep' tabindex="1">← Voltar</a>
                     </div>
                 </div>
             </div>
