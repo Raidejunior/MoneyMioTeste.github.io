@@ -2,6 +2,7 @@
  * Tuna Signup Form Wizard
  * @type Javascript Class
  */
+
 var valoremprestimo = document.getElementById('valoremprestimo');
 var valoremprestimo2 = document.getElementById('valoremprestimo2');
 var tn_name = document.getElementById('tn_name');
@@ -19,7 +20,7 @@ var tunaWizard = {
      */
     setResponsive: function() {
         var self = this;
-        /*var windowHeight = $(window).height();
+        var windowHeight = $(window).height();
         var windowWidth = $(window).width();
         windowHeight = windowHeight > 360 ? windowHeight : 360;
         var tunaContainer = $(".tuna-signup-container");
@@ -31,7 +32,7 @@ var tunaWizard = {
         } else {
             tunaContainer.add(tunaLeft).add(tunaRight).css("height", "auto");
         }
-        
+
         //Testimonail Slider Show/Hide
         var sliderContainer = $(".tuna-slider-container");
         if (windowHeight < 600 || windowWidth < 768) {
@@ -43,7 +44,7 @@ var tunaWizard = {
         }
         if (windowHeight < 400) {
             $(".button-container").css("bottom", "50px");
-        }*/
+        }
 
     },
     /**
@@ -55,24 +56,14 @@ var tunaWizard = {
     changeStep: function(currentStep, nextStep) {
         var self = this;
 
-        if (nextStep <= 0 && nextStep > 8) {
+        if (nextStep <= 0 && nextStep > 9) {
             return false;
         }
 
-        //Validations
-        if (nextStep === 1) {
-            if (!($("#simulador").hasClass("d-none") && !($("#left-layout").hasClass("d-none")))) {
-                $("#simulador").addClass("d-none");
-                $("#left-layout").removeClass("d-none");
-            }
-        }
 
+        //Validations
         if (nextStep === 2) {
 
-            if ($("#valoremprestimo").val().trim() === "") {
-                self.setInputError($("#valorimovel"));
-                return;
-            }
 
             if ($("#valorimovel").val().trim() === "") {
                 self.setInputError($("#valorimovel"));
@@ -87,8 +78,12 @@ var tunaWizard = {
             }
 
 
-            calcualtePrice(valoremprestimo.value, valorimovel.value);
+            calcualtePrice(tn_name.value, valorimovel.value);
 
+
+        } else if (!($("#simulador").hasClass("d-none") && !($("#left-layout").hasClass("d-none")))) {
+            $("#simulador").addClass("d-none");
+            $("#left-layout").removeClass("d-none");
         }
 
 
@@ -105,34 +100,87 @@ var tunaWizard = {
                 return;
             }
 
-            if (!($("#simulador").hasClass("d-none") && !($("#left-layout").hasClass("d-none")))) {
-                $("#simulador").addClass("d-none");
-                $("#left-layout").removeClass("d-none");
-            }
-
         }
 
+        //Value validation
         if (nextStep === 4) {
+
             if ($("#tn_name").val().trim() === "") {
                 self.setInputError($("#tn_name"));
                 return;
             }
+
+            if ($("#valoremprestimo2").val().trim() === "") {
+                self.setInputError($("#valoremprestimo2"));
+                return;
+            }
+            if ($("#valorimovel2").val().trim() === "") {
+                self.setInputError($("#valorimovel2"));
+                return;
+            }
+
         }
+
+        //Value validation
         if (nextStep === 5) {
-            if ($("#tn_email").val().trim() === "" || !self.isEmail($("#tn_email").val().trim())) {
-                self.setInputError($("#tn_email"));
+
+            if ($("#valoremprestimo2").val().trim() === "") {
+                self.setInputError($("#valoremprestimo2"));
                 return;
             }
+            if ($("#valorimovel2").val().trim() === "") {
+                self.setInputError($("#valorimovel2"));
+                return;
+            }
+
         }
+
+        //Value validation
         if (nextStep === 6) {
-            if ($("#tn_cpf").val().trim() === "" || $("#tn_cpf").val().trim().length != 14) {
-                self.setInputError($("#tn_cpf"));
+
+            if ($("#valoremprestimo2").val().trim() === "") {
+                self.setInputError($("#valoremprestimo2"));
+                return;
+            }
+            if ($("#valorimovel2").val().trim() === "") {
+                self.setInputError($("#valorimovel2"));
+                return;
+            }
+
+        }
+
+        //Value validation
+        if (nextStep === 7) {
+
+            if ($("#valoremprestimo2").val().trim() === "") {
+                self.setInputError($("#valoremprestimo2"));
+                return;
+            }
+            if ($("#valorimovel2").val().trim() === "") {
+                self.setInputError($("#valorimovel2"));
+                return;
+            }
+
+        }
+
+        //Radio validation
+        if (nextStep === 8) {
+            if ($("input[name='tn_gender']:checked").val() === "") {
+                self.setInputError($("input[name='tn_gender']"));
                 return;
             }
         }
-        if (nextStep === 8) {
-            if ($("#tn_phone").val().trim() === "" || $("#tn_phone").val().trim().length < 14) {
-                self.setInputError($("#tn_phone"));
+
+        if (nextStep === 9) {
+            if ($("input[name='tn_gender']:checked").val() === "") {
+                self.setInputError($("input[name='tn_gender']"));
+                return;
+            }
+        }
+
+        if (nextStep === 10) {
+            if ($("#tn_sport").val().trim() === "") {
+                self.setInputError($("#tn_sport"));
                 return;
             }
         }
@@ -156,15 +204,13 @@ var tunaWizard = {
 
         var stepCountsEl = $(".steps-count");
         if (nextStep === self.stepCount) {
-            stepCountsEl.html("CONFIRME SUAS INFORMAÇÕES");
+            stepCountsEl.html("CONFIRM DETAILS");
             $(".button-container").hide();
             var stepConfirm = $(".step-confirm");
-            stepConfirm.find("input[name='valoremprestimo']").val($("#valoremprestimo2").val());
-            stepConfirm.find("input[name='valorimovel']").val($("#valorimovel2").val());
             stepConfirm.find("input[name='name']").val($("#tn_name").val());
             stepConfirm.find("input[name='email']").val($("#tn_email").val());
             stepConfirm.find("input[name='phone']").val($("#tn_phone").val());
-            stepConfirm.find("input[name='cpf']").val($("#tn_cpf").val());
+            stepConfirm.find("input[name='password']").val($("#tn_password").val());
         }
 
         //Atualização de número do passo atual
@@ -213,6 +259,18 @@ var tunaWizard = {
 
         }
 
+        if (nextStep === 9) {
+
+            stepCountsEl.find("span.step-current").text(4);
+
+        }
+
+        if (nextStep === 10) {
+
+            stepCountsEl.find("span.step-current").text(4);
+
+        }
+
         //Hide prevButton if we are in first step
         var prevStepEl = $(".prevStep");
         if (nextStep === 1) {
@@ -221,13 +279,53 @@ var tunaWizard = {
             prevStepEl.css("display", "inline-block");
         }
 
+        /* ---------------------------------------- MÁSCARA MOEDA REAL MONEYMIO --------------------------------------- */
+
+        $("#formSimulacaoWeb").validate({
+            rules: {
+                ValorSolicitado: {
+                    maxlength: 10
+                }
+            }
+        })
+
+        $("#valoremprestimo2").keydown(function() {
+
+            $("#valoremprestimo2").maskMoney({
+                prefix: 'R$ ',
+                thousands: '.',
+                decimal: ','
+            });
+
+            $("#valorimovel").removeClass("d-none");
+
+            if ($("#valorimovel2").hasClass("d-none"))
+                $("#formInput").removeClass("d-none");
+
+        });
+
+
+        $("#valorimovel2").keydown(function() {
+
+            $("#valorimovel2").maskMoney({
+                prefix: 'R$ ',
+                thousands: '.',
+                decimal: ','
+            });
+
+            $("#divButtonSubmit").removeClass("d-none");
+
+        });
+
         /* ------------------------------------- Guardando variáveis ------------------------------------------------ */
 
         if (valoremprestimo && valoremprestimo.value) {
+            valoremprestimo.value = valoremprestimo.value;
             valoremprestimo2.value = valoremprestimo.value;
         }
 
         if (valorimovel && valorimovel.value) {
+            valorimovel.value = valorimovel.value;
             valorimovel2.value = valorimovel.value;
         }
 
@@ -271,12 +369,12 @@ var tunaWizard = {
         });
 
         //Jquery Uniform Plugin
-        $(".tuna-signup-container input[type='checkbox'],.tuna-signup-container input[type='radio'], .select").uniform();
+        $(".tuna-signup-container input[type='checkbox'],.tuna-signup-container input[type='radio'],.tuna-signup-container input[type='file'],.select").uniform();
 
         //Jquery Mask Plugin
-        $('.tuna-signup-container input[name="phone"],.tuna-signup-container input[name="tn_phone"]').mask('(00) 00000-0000');
+        $('.tuna-signup-container input[name="phone"],.tuna-signup-container input[name="tn_phone"]').mask('000 000 00 00');
 
-        // Focuses on valoremprestimo input, when page loaded
+        // Focuses on name input, when page loaded
         window.setTimeout(function() {
             $("#valoremprestimo").focus();
         }, 500);
@@ -311,11 +409,11 @@ var tunaWizard = {
             $(this).parent().find("input").focus();
         });
 
-        // Confirm Details - Show cpf
+        // Confirm Details - Show Password
         stepConfirm.find(".input-container a.showPass").on("mousedown", function() {
             $(this).parent().find("input").attr("type", "text");
         }).mouseup(function() {
-            $(this).parent().find("input").attr("type", "cpf");
+            $(this).parent().find("input").attr("type", "password");
         });
 
         stepConfirm.find(".input-container input").on("focus", function() {
@@ -361,18 +459,6 @@ var tunaWizard = {
 
             $(this).find(".confirm-input-error").removeClass("confirm-input-error");
 
-            var nameInput = $(this).find("input[name='valoremprestimo']");
-            if (nameInput.val().trim() === "") {
-                nameInput.addClass("confirm-input-error").focus();
-                return;
-            }
-
-            var nameInput = $(this).find("input[name='valorimovel']");
-            if (nameInput.val().trim() === "") {
-                nameInput.addClass("confirm-input-error").focus();
-                return;
-            }
-
             var nameInput = $(this).find("input[name='name']");
             if (nameInput.val().trim() === "") {
                 nameInput.addClass("confirm-input-error").focus();
@@ -385,22 +471,22 @@ var tunaWizard = {
                 return;
             }
 
-            var cpfInput = $(this).find("input[name='cpf']");
-            if (cpfInput.val().trim() === "" || cpfInput.val().trim().length != 14) {
-                cpfInput.addClass("confirm-input-error").focus();
+            var passwordInput = $(this).find("input[name='password']");
+            if (passwordInput.val().trim() === "" || passwordInput.val().trim().length < 8) {
+                passwordInput.addClass("confirm-input-error").focus();
                 return;
             }
 
             var phoneInput = $(this).find("input[name='phone']");
-            if (phoneInput.val().trim() === "" || phoneInput.val().trim().length < 14) {
+            if (phoneInput.val().trim() === "" || phoneInput.val().trim().length < 13) {
                 phoneInput.addClass("confirm-input-error").focus();
                 return;
             }
 
             if (!$("input[name='agreement']").prop("checked")) {
                 swal({
-                    title: "Atenção!",
-                    text: "Você deve concordar com os termos e condições.",
+                    title: "Warning!",
+                    text: "You must agree with the terms and conditions.",
                     type: "warning",
                     confirmButtonText: "Ok"
                 });
@@ -418,14 +504,14 @@ var tunaWizard = {
             $.post("../php/smtp.php", $(this).serialize(), function(result) {
                 if (result.success) {
                     swal({
-                        title: "SUCESSO",
-                        text: "Suas informações foram enviadas com sucesso! Em breve entraremos em contato",
+                        title: "Success",
+                        text: "Your information submitted successfully!",
                         type: "success",
                         confirmButtonText: "Ok"
                     });
                 } else {
                     swal({
-                        title: "Erro!",
+                        title: "Error!",
                         text: result.msg,
                         type: "error",
                         confirmButtonText: "Ok"
@@ -454,10 +540,12 @@ $.fn.materialInput = function() {
         el.checkFocused(e.target);
     });
 
+
     el.find('input.formInput').focusout(function(e) {
         el.setLabel(e.target);
         el.checkUnFocused(e.target);
     });
+
 
     this.setLabel = function(target) {
         label = el.find('label[for=' + target.id + ']');
@@ -498,7 +586,9 @@ $(document).ready(function() {
      */
     $(".tuna-steps").materialInput();
 
-
+    /**
+     * Bootstrap Select Plugin
+     */
     $(".selectpicker").selectpicker();
 
     /**
@@ -507,11 +597,9 @@ $(document).ready(function() {
      */
     tunaWizard.start();
 
+    /* -------------------------- Adicionados para o simulador ------------------------------------- */
 
-    /* -------------------------- Scripts adicionados para o simulador ------------------------------------- */
 
-
-    /* --------------------- MÁSCARA MOEDA REAL MONEYMIO --------------------- */
 
 
     /* $("#formSimulacaoWeb").validate({
@@ -546,7 +634,53 @@ $(document).ready(function() {
             decimal: ','
         });
 
+        $("#divButtonSubmit").removeClass("d-none");
+
     });
+
+
+
+    document.body.onresize = function() {
+
+        if (document.body.clientWidth < 640) {
+            $("#formSimulacaoWebSM").validate({
+                rules: {
+                    ValorSolicitado: {
+                        maxlength: 10
+                    }
+                }
+            })
+
+            $("#ValorSolicitadoSM").keydown(function() {
+
+                $("#ValorSolicitadoSM").maskMoney({
+                    prefix: 'R$ ',
+                    thousands: '.',
+                    decimal: ','
+                });
+
+                $("#divSimularEmprestimoSM").removeClass("d-none");
+
+            });
+
+
+            $("#ValorImovelSM").keydown(function() {
+
+                $("#ValorImovelSM").maskMoney({
+                    prefix: 'R$ ',
+                    thousands: '.',
+                    decimal: ','
+                });
+
+                $("#divButtonSubmitSM").removeClass("d-none");
+
+            });
+
+        }
+    }
+
+
+
 
 
     $("#total").val("10000");
@@ -569,149 +703,10 @@ $(document).ready(function() {
 
 });
 
-/* ---------------------------------------------- Cálculo empréstimo ---------------------------------------------- */
-
-
-var p = {
-
-    0: "100K",
-    1: "150K",
-    2: "200K",
-    3: "250K",
-    4: "300K",
-    5: "350K",
-    6: "400K",
-    7: "450K",
-    8: "500K",
-    9: "550K",
-    10: "600K",
-    11: "650K",
-    12: "700K",
-    13: "750K",
-    14: "800K",
-    15: "850K",
-    16: "900K",
-    17: "950K",
-    18: "1,000K",
-    19: "1,100K",
-    20: "1,200K",
-    21: "1,300K",
-    22: "1,400K",
-    23: "1,500K",
-    24: "1,600K",
-    25: "1,700K",
-    26: "1,800K",
-    27: "19,00K",
-    28: "2,000K",
-};
-
-/* var t = {
- 
-    0: "100000",
-    1: "150000",
-    2: "200000",
-    3: "250000",
-    4: "300000",
-    5: "350000",
-    6: "400000",
-    7: "450000",
-    8: "500000",
-    9: "550000",
-    10: "600000",
-    11: "650000",
-    12: "700000",
-    13: "750000",
-    14: "800000",
-    15: "850000",
-    16: "900000",
-    17: "950000",
-    18: "1000000",
-    19: "1100000",
-    20: "1200000",
-    21: "1300000",
-    22: "1400000",
-    23: "1500000",
-    24: "1600000",
-    25: "1700000",
-    26: "1800000",
-    27: "1900000",
-    28: "2000000",
- 
-} */
-
-var obj = {
-    '144month': '1.10',
-    '132month': '1.20',
-    '120month': '1.30',
-
-    '108month': '1.40',
-    '96month': '1.50',
-    '84month': '1.60',
-    '72month': '1.70',
-
-    '60month': '1.80',
-    '48month': '1.90',
-    '36month': '2.0'
-};
 
 
 
-
-
-
-/* $("#slider_amirol").slider({
-    range: "min",
-    animate: true,
- 
-    min: 0,
-    max: 28,
-    step: 1,
-    slide: function(event, ui) {
-        update(1, ui.value); //changed
-        calcualtePrice(ui.value);
-    }
-}); */
-
-
-
-function calcualtePrice(valemp, valimo) {
-
-    if (undefined === valemp || undefined === valimo)
-        valemp = 0, valimo = 0;
-
-    valemp = Number(valemp.replace(/[^0-9,]*/g, '').replace(',', '.'));
-    valimo = Number(valimo.replace(/[^0-9,]*/g, '').replace(',', '.'));
-
-
-    month = $(".selected-month").attr('id');
-    var term = obj[month];
-    var totalPrice = valemp + (valemp * term / (valimo * 0.07)) * 1000;
-    var primeiraParcela = totalPrice / 12;
-
-
-    var valExibir = totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-    var exibirprimeiraParcela = primeiraParcela.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-
-
-    $("#total12").val(valExibir);
-    $("#primeiraparcela").val(exibirprimeiraParcela);
-    /* 
-        $("#total52").val(Math.round((totalPrice) / 52).toFixed(2));*/
-}
-
-function alteravalor() {
-
-    valoratualemprestimo = $('#valoremprestimo2').val();
-    valoratualimovel2 = $('#valorimovel2').val();
-
-    calcualtePrice(valoratualemprestimo, valoratualimovel2);
-
-    valoremprestimo.value = valoratualemprestimo;
-    valorimovel.value = valoratualimovel2;
-
-}
-
-/* ----------------------------------------- Scripts adicionados timeline ----------------------------------------- */
+/* ----------------------------------------- Scripts adicionados ----------------------------------------- */
 
 jQuery(document).ready(function($) {
     var timelines = $('.cd-horizontal-timeline'),
@@ -979,3 +974,140 @@ jQuery(document).ready(function($) {
         return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
     }
 });
+
+
+/* ---------------------------------------------- Cálculo empréstimo ---------------------------------------------- */
+
+
+var p = {
+
+    0: "100K",
+    1: "150K",
+    2: "200K",
+    3: "250K",
+    4: "300K",
+    5: "350K",
+    6: "400K",
+    7: "450K",
+    8: "500K",
+    9: "550K",
+    10: "600K",
+    11: "650K",
+    12: "700K",
+    13: "750K",
+    14: "800K",
+    15: "850K",
+    16: "900K",
+    17: "950K",
+    18: "1,000K",
+    19: "1,100K",
+    20: "1,200K",
+    21: "1,300K",
+    22: "1,400K",
+    23: "1,500K",
+    24: "1,600K",
+    25: "1,700K",
+    26: "1,800K",
+    27: "19,00K",
+    28: "2,000K",
+};
+
+/* var t = {
+ 
+    0: "100000",
+    1: "150000",
+    2: "200000",
+    3: "250000",
+    4: "300000",
+    5: "350000",
+    6: "400000",
+    7: "450000",
+    8: "500000",
+    9: "550000",
+    10: "600000",
+    11: "650000",
+    12: "700000",
+    13: "750000",
+    14: "800000",
+    15: "850000",
+    16: "900000",
+    17: "950000",
+    18: "1000000",
+    19: "1100000",
+    20: "1200000",
+    21: "1300000",
+    22: "1400000",
+    23: "1500000",
+    24: "1600000",
+    25: "1700000",
+    26: "1800000",
+    27: "1900000",
+    28: "2000000",
+ 
+} */
+
+var obj = {
+    '144month': '1.10',
+    '132month': '1.20',
+    '120month': '1.30',
+
+    '108month': '1.40',
+    '96month': '1.50',
+    '84month': '1.60',
+    '72month': '1.70',
+
+    '60month': '1.80',
+    '48month': '1.90',
+    '36month': '2.0'
+};
+
+
+
+
+
+
+/* $("#slider_amirol").slider({
+    range: "min",
+    animate: true,
+ 
+    min: 0,
+    max: 28,
+    step: 1,
+    slide: function(event, ui) {
+        update(1, ui.value); //changed
+        calcualtePrice(ui.value);
+    }
+}); */
+
+
+
+function calcualtePrice(valemp, valimo) {
+
+    if (undefined === valemp || undefined === valimo)
+        valemp = 0, valimo = 0;
+
+    valemp = Number(valemp.replace(/[^0-9,]*/g, '').replace(',', '.'));
+    valimo = Number(valimo.replace(/[^0-9,]*/g, '').replace(',', '.'));
+
+
+    month = $(".selected-month").attr('id');
+    var term = obj[month];
+    16, 567.64
+    var totalPrice = valemp * term / (valimo * 0.07);
+
+    $("#total").val(totalPrice.toFixed(2));
+    $("#total12").val(Math.round((totalPrice) / 12).toFixed(2));
+    $("#total52").val(Math.round((totalPrice) / 52).toFixed(2));
+}
+
+function alteravalor() {
+
+    valoratualemprestimo = $('#valoremprestimo2').val();
+    valoratualimovel2 = $('#valorimovel2').val();
+
+    calcualtePrice(valoratualemprestimo, valoratualimovel2);
+
+    valoremprestimo.value = valoratualemprestimo;
+    valorimovel.value = valoratualimovel2;
+
+}

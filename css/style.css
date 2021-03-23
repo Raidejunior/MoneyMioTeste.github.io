@@ -45,7 +45,20 @@ body {
     font-size: 13px;
     font-family: 'Open Sans', arial, helvetica, sans-serif;
     color: #333;
-    background: #f55661;
+    background-image: -o-linear-gradient(left top, #5F71C4 0%, #EB467E 100%);
+    background-image: -moz-linear-gradient(left top, #5F71C4 0%, #EB467E 100%);
+    background-image: -webkit-linear-gradient(left top, #5F71C4 0%, #EB467E 100%);
+    background-image: -ms-linear-gradient(left top, #5F71C4 0%, #EB467E 100%);
+    background-image: linear-gradient(left top, #5F71C4 0%, #EB467E 100%);
+}
+
+.tuna-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url(/imagens/bg.png);
 }
 
 
@@ -200,19 +213,22 @@ body {
     position: relative;
     z-index: 0;
     overflow: hidden;
-    background: url(/imagens/backgrounds/bg.png) no-repeat #F7F7F7;
+    padding: 40px;
+    border-radius: 10px;
+    margin: 150px auto;
+    background: #2A3896;
 }
 
-.tuna-signup-container:after {
-    z-index: -1;
+.tuna-signup-container:before {
     position: absolute;
-    height: 2000px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(../images/bg.png);
     display: block;
     content: '';
-    top: 0;
-    right: 0;
-    width: 40%;
-    background: #f55661;
+    opacity: 0.5;
 }
 
 
@@ -220,9 +236,7 @@ body {
 [5.1 Left Panel / .tuna-signup-left]
 */
 
-.tuna-signup-left {
-    padding: 60px 30px 30px;
-}
+.tuna-signup-left {}
 
 .tuna-signup-left p {
     font-size: 18px;
@@ -235,6 +249,10 @@ body {
     font-weight: 600;
     margin-top: 20px;
     font-weight: bold;
+}
+
+.tuna-signup-left hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 
@@ -290,12 +308,13 @@ body {
 
 .tuna-signup-testimonial i {
     font-size: 30px;
+    color: #FFC926;
 }
 
 .tuna-signup-testimonial p {
-    color: #666;
+    color: #FFF;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 15px;
 }
 
@@ -306,10 +325,10 @@ body {
 
 .tuna-signup-right {
     color: #FFF;
-    background: #f55661;
     position: relative;
     overflow-y: auto;
-    padding: 60px 30px 0 0
+    overflow-x: hidden;
+    min-height: 600px;
 }
 
 
@@ -399,11 +418,9 @@ body {
 }
 
 .step-confirm.step-active .form-group {
-    /*animation: animateInput .3s forwards;
+    animation: animateInput .3s forwards;
     -webkit-transform: translateY(50px);
-    transform: translateY(50px);*/
-    opacity: 1;
-    visibility: visible;
+    transform: translateY(50px);
 }
 
 .step-confirm .form-group:nth-of-type(1) {
@@ -445,6 +462,8 @@ body {
     transition: all .35s ease;
     font-weight: 600;
 }
+
+.step-confirm input:hover {}
 
 .step-confirm input:focus {
     box-shadow: none;
@@ -525,7 +544,7 @@ body {
 
 .button-container {
     position: absolute;
-    bottom: 100px;
+    bottom: 20px;
     right: 0;
     text-align: right;
     width: 100%;
@@ -546,6 +565,7 @@ body {
 .prevStep {
     outline: none;
     display: none;
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .button-container a,
@@ -614,6 +634,8 @@ body {
 .body-green {
     background: #00B2B2;
 }
+
+.tuna-green {}
 
 .tuna-green .tuna-signup-right {
     background: #00B2B2;
@@ -709,7 +731,11 @@ body {
     .container {
         width: 100%;
     }
-    .tuna-signup-container:after {
+    .tuna-signup-container {
+        margin: 15px auto;
+        padding: 20px;
+    }
+    .tuna-slider-container {
         display: none;
     }
     .tuna-signup-left {
@@ -740,9 +766,6 @@ body {
     .step-confirm .bootstrap-select button {
         padding: 6px 15px;
         font-size: 16px;
-    }
-    .button-container {
-        bottom: 15px;
     }
     .formLabel,
     .formInput,
@@ -1347,7 +1370,7 @@ h4.great {
     display: block;
     margin-top: -10px;
     margin-bottom: 10px;
-    color: #737373;
+    color: #fff;
     /*position: absolute;*/
     /*margin-left: 20px;*/
     font-weight: 200;
@@ -1387,4 +1410,107 @@ hr.style {
     border: 0;
     border-bottom: 1px dashed #ccc;
     background: #999;
+}
+
+.simulador {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+    height: 100%;
+}
+
+h1 sup {
+    color: #fff;
+    font-size: .35em;
+    top: -1.2em;
+}
+
+sup {
+    color: #fff;
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+h5,
+.h5 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: .5em;
+    margin-top: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.simulador fieldset {
+    color: #fff;
+}
+
+.moneymio-fieldset {
+    border: 1.2px solid rgba(255, 255, 255, 0.900);
+    border-radius: 8px;
+    font-size: .8rem;
+    padding: .25rem 1rem .5rem;
+    margin-bottom: .8rem;
+}
+
+fieldset {
+    margin-bottom: .8rem;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.moneymio-fieldset legend {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    padding: 0 .7rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+legend {
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: .8rem;
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+}
+
+.moneymio-fieldset>div {
+    text-transform: uppercase;
+    border: none;
+    background: none;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    border: none;
+    background: none;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

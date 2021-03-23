@@ -2,309 +2,336 @@
 <html lang="pt-br">
 
 <head>
-    <title>Moneymio</title>
-    <meta charset="utf-8">
+    <title>MoneyMio</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simulação Moneymio">
+    <meta name="revisit-after" content="7 days">
+    <meta name="robots" content="index, follow">
+    <meta name="rating" content="General">
+    <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin-ext" rel="stylesheet" />
 
-    <!-- build:css -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/jquery.bxslider.min.css" />
-    <link rel="stylesheet" href="/css/font.css" />
-    <link rel="stylesheet" href="/css/uniform-default.css" />
-    <link rel="stylesheet" href="/css/bootstrap-select.css" />
-    <link rel="stylesheet" href="/css/sweetalert.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/imagens/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/imagens/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/imagens/favicon-16x16.png">
-    <link rel="manifest" href="/manifest/site.webmanifest">
-    <!-- endbuild -->
-
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/jquery.bxslider.min.css" />
+    <link rel="stylesheet" href="../../css/font.css" />
+    <link rel="stylesheet" href="../../css/uniform-default.css" />
+    <link rel="stylesheet" href="../../css/bootstrap-select.css" />
+    <link rel="stylesheet" href="../../css/sweetalert.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../imagens/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../imagens/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../imagens/favicon-16x16.png">
+    <link rel="manifest" href="../../manifest/site.webmanifest">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
 <body>
-
-
+    <div class="tuna-overlay"></div>
 
     <div class="tuna-loader-container">
         <div class="tuna-loader"></div>
     </div>
 
-    <div class='tuna-signup-container'>
-        <div class='container'>
-            <div class="row">
-                <div id="simulador" class='tuna-signup-left col-md-4 col-sm-4  d-none'>
-                    <img class='tuna-signup-logo' src='imagens/logo-moneymio (2).png' alt="Moneymio" style="display: block;" />
+    <div class="container">
 
-                    <div style="position: relative; top: 5%;">
-                        <label for="amount_amirol" class="control-label">Anualmente (R$): </label>
-                        <span class="help-text">Quanto você precisará pagar</span>
+        <div class='tuna-signup-container'>
+
+            <div class='tuna-signup-left col-md-4 col-sm-4'>
+                <div id="simulador" class='d-none'>
+                    <img class='tuna-signup-logo' src='../../imagens/logo-moneymio.png' alt="Moneymio" style="display: block;" />
+
+                    <div style="position: relative; top: 2rem;">
+
+                        <div class="text-center">
+                            <h5>Valor da primeira parcela:</h5>
+                            <h1 class="mb-0">
+                                <input class="price lead" name="primeiraparcela" type="text" id="primeiraparcela" style="color: #fff;font-weight: 500;" disabled="disabled" data-thousands="." data-decimal="," data-prefix="R$ " />
+                            </h1>
+
+                            <div style="margin-top:30px"></div>
+                            <hr class="style" style="margin: 1.2rem 0;">
+
+                            <fieldset class="moneymio-fieldset" type="text" id="amount_amirol" style="color: #fff;">
+                                <legend style="border: none; width: auto;  text-align: end;">Quanto você precisará pagar</legend>
+                                <input class="price lead" name="totalprice12" type="text" id="total12" style="color: #fff;" disabled="disabled" data-thousands="." data-decimal="," data-prefix="R$ " />
+                            </fieldset>
+
+                            <fieldset class="moneymio-fieldset" type="text" id="amount_amirol" style="color: #fff;">
+                                <legend style="border: none; width: auto; text-align: end;">Taxa de juros</legend>
+                                <div class="text-center lead">0,79% a.m. + IPCA</div>
+                            </fieldset>
+
+                            <fieldset class="moneymio-fieldset" type="text" id="amount_amirol" style="color: #fff; margin-bottom: 0;">
+                                <legend style="border: none; width: auto; text-align: end;">Sistema de amortização</legend>
+                                <div class="text-center lead">Tabela Price</div>
+                            </fieldset>
+
+                            <div class="text-center" style="color: #fff; padding-top: 1rem;">
+                                <small>A taxa de juros varia a partir de 0.79% ao mês, dependendo da análise de crédito.</small><br>
+                                <small>A parcela apresentada já inclui os custos aproximados com avaliação do imóvel, seguros e custos cartoriais.</small>
+                            </div>
 
 
-                        <input type="hidden" id="amount_amirol" class="form-control">
-                        <!-- <p class="price lead" id="total"></p> -->
-                        <input class="price lead" name="totalprice" type="text" id="total" disabled="disabled" style="" />
+                            <!-- <span class="help-text"></span>
 
+                            <input type="hidden" id="amount_amirol" class="form-control" style="color: #fff;"> -->
+                            <!-- <p class="price lead" id="total12"></p> -->
+                            <!-- <input class="price lead" name="totalprice12" type="text" id="total12" style="color: #fff;" disabled="disabled" data-thousands="." data-decimal="," data-prefix="R$ " /> -->
 
-                        <label for="amount_amirol" class="control-label">Mensalmente (R$): </label>
-                        <span class="help-text">Quanto você precisará pagar</span>
-
-
-                        <input type="hidden" id="amount_amirol" class="form-control">
-                        <!-- <p class="price lead" id="total12"></p> -->
-                        <input class="price lead" name="totalprice12" type="text" id="total12" disabled="disabled" style="" />
+                        </div>
 
 
 
-                        <label for="amount_amirol" class="control-label">Semanalmente (R$): </label>
-                        <span class="help-text">Quanto você precisará pagar</span>
 
 
-                        <input type="hidden" id="amount_amirol" class="form-control">
-                        <!-- <p class="price lead" id="total52"></p> -->
-                        <input class="price lead" name="totalprice52" type="text" id="total52" disabled="disabled" style="" />
-
-
-
-                        <div style="margin-top:30px"></div>
-                        <hr class="style">
-
-
-                        <img src="https://github.com/AmirolAhmad/Bootstrap-Calculator/blob/master/images/payment.png?raw=true" class="img-responsive payment" />
                     </div>
 
                     <!-- <p class="text-center" style="padding-top:10px;font-size:12px;color:#2c3e50;font-style:italic;">Created by <a href="https://twitter.com/AmirolAhmad" target="_blank">AmirolAhmad</a></p> -->
                 </div>
 
+                <div id="left-layout">
 
-                <div id="left-layout" class='tuna-signup-left col-md-4 col-sm-4'>
-                    <img class='tuna-signup-logo' src='imagens/logo-moneymio (2).png' alt="Moneymio" />
-                    <!-- <p>Agradecemos o interesse em nossa empresa</p> -->
-                    <p class="tuna-trial">Preencha os dados abaixo para realizar sua simulação.</p>
+                    <img class='tuna-signup-logo' src='../../imagens/logo-moneymio.png' alt="logo" />
+                    <p>Empréstimo rápido e barato</p>
+                    <!--<p class="tuna-trial">Consiga o crédito que você precisa usando seu imóvel como garantia</p>-->
                     <hr/>
                     <div class="tuna-slider-container">
                         <ul class="tuna-slider">
                             <li class='tuna-signup-testimonial'>
-                                <i class="icon-quote"></i>
-                                <p>Melhor plataforma! :)</p>
-                                <img src='/imagens/apple-touch-icon.png' alt="Logo Moneymio" />
-                                <b>Sume Tella<span>‒ Digital Marketing Specialist</span></b>
+                                <i class="icon icon-quill"></i>
+                                <p>Taxas a partir de 0,79% ao mês + IPCA</p>
+                                <!--<img src='images/testimonials/logo1.png' alt=""/>
+                                <b>Sume Tella<span>‒ Digital Marketing Specialist</span></b>-->
                             </li>
                             <li class='tuna-signup-testimonial'>
-                                <i class="icon-quote"></i>
-                                <p>Meus investimentos melhoraram ainda mais! :)</p>
-                                <img src='/imagens/apple-touch-icon.png' alt="Logo Moneymio" />
-                                <b>John Masculer<span>‒ Customer Service Department</span></b>
+                                <i class="icon icon-quill"></i>
+                                <p>Carência até 12 meses para a 1ª parcela</p>
+                            </li>
+                            <li class='tuna-signup-testimonial'>
+                                <i class="icon icon-quill"></i>
+                                <p>Até 240 meses para pagar</p>
+                            </li>
+                            <li class='tuna-signup-testimonial'>
+                                <i class="icon icon-quill"></i>
+                                <p>Até 2 dias para realização da análise de crédito</p>
+                            </li>
+                            <li class='tuna-signup-testimonial'>
+                                <i class="icon icon-quill"></i>
+                                <p>A partir de R$50 mil em empréstimo</p>
+                            </li>
+                            <li class='tuna-signup-testimonial'>
+                                <i class="icon icon-quill"></i>
+                                <p>100% online</p>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class='tuna-signup-right col-md-8 col-sm-8 '>
+            </div>
+            <div class='tuna-signup-right col-md-8 col-sm-8 '>
 
-                    <div class='steps-count'>
-                        STEP <span class="step-current">1</span>/<span class="step-count"></span>
+                <div class='steps-count'>
+                    PASSO <span class="step-current">1</span>/<span class="step-count"></span>
+                </div>
+
+                <div class="tuna-steps">
+                    <div class="step step-active" id="data-step-id-1" data-step-id='1'>
+
+                        <label class="formLabel" for="valoremprestimo">Valor do empréstimo</label>
+                        <input type="text" class="formInput" id='valoremprestimo' name="valoremprestimo" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ " />
+                        <div class='help-error'><i class="icon icon-warning"></i> O valor do empréstimo é requerido</div>
+
+
+                        <label class="formLabel simularvalorimovel" for="valorimovel">Valor do Imóvel</label>
+                        <input type="text" class="formInput simularvalorimovel" id='valorimovel' name="valorimovel" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ "
+                        />
+                        <div class='help-error'><i class="icon icon-warning"></i> O valor do imóvel é requerido</div>
+
                     </div>
 
-                    <div class="tuna-steps">
-                        <div class="step step-active" id="data-step-id-1" data-step-id='1'>
+                    <div class="step" id="data-step-id-2" data-step-id='2' style="top: 30%;">
 
-                            <label class="formLabel" for="tn_name">Valor do empréstimo</label>
-                            <input type="text" class="formInput" id='tn_name' name="tn_name" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ " />
-                            <div class='help-error'><i class="icon icon-warning"></i> Valor do empréstimo é necessário!</div>
+                        <label class="formLabel" for="valoremprestimo2" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
+                                Valor do empréstimo
+                            </label>
+                        <input type="text" class="formInput" onkeyup="alteravalor()" id='valoremprestimo2' name="valoremprestimo2" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal=","
+                            data-prefix="R$ " />
+                        <div class='help-error'><i class="icon icon-warning"></i> Valor do empréstimo é necessário!</div>
+
+                        <label class="formLabel simularvalorimovel" for="valorimovel2" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
+                                Valor do Imóvel
+                            </label>
+                        <input type="text" class="formInput simularvalorimovel" onkeyup="alteravalor()" id='valorimovel2' name="valorimovel2" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="."
+                            data-decimal="," data-prefix="R$ " />
+                        <div class='help-error'><i class="icon icon-warning"></i> Valor do imóvel também é necessário! =)</div>
 
 
-                            <label class="formLabel simularvalorimovel" for="valorimovel">Valor do Imóvel</label>
-                            <input type="text" class="formInput simularvalorimovel" id='valorimovel' name="valorimovel" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal="," data-prefix="R$ "
-                            />
-                            <div class='help-error'><i class="icon icon-warning"></i> Valor do imóvel também é necessário! =)</div>
 
+                        <div class="cd-horizontal-timeline loaded">
+                            <h4 class="great">
+                                Em quantas parcelas?
+                            </h4>
+                            <div class="timeline">
+                                <div class="events-wrapper">
+                                    <div class="events" style="width: 800px;">
+                                        <ol>
+                                            <li><a href="#0" data-date="01/01/2017" class="older-event month" style="left: 20px;" id='36month'>36</a></li>
+                                            <li><a href="#0" data-date="10/01/2017" style="left: 25px;" class="older-event month" id='48month'>48</a></li>
+                                            <li><a href="#0" data-date="20/01/2017" style="left: 150px;" class="selected month active-month selected-month" id='60month'>60</a></li>
+                                            <li><a href="#0" data-date="10/02/2017" style="left: 250px;" class="month" id='72month'>72</a></li>
+                                            <li><a href="#0" data-date="20/02/2017" style="left: 325px;" class="month" id='84month'>84</a></li>
+                                            <li><a href="#0" data-date="15/03/2017" style="left: 400px;" class="month" id='96month'>96</a></li>
+                                            <li><a href="#0" data-date="25/03/2017" style="left: 475px;" class="month" id='108month'>108</a></li>
+                                            <li><a href="#0" data-date="10/04/2017" style="left: 550px;" class="month" id='120month'>120</a></li>
+                                            <li><a href="#0" data-date="00/05/2017" style="left: 675px;" class="month" id='132month'>132</a></li>
+                                            <li><a href="#0" data-date="15/05/2017" style="left: 750px;" class="month" id='144month'>144</a></li>
+                                        </ol>
+                                        <span class="filling-line" aria-hidden="true" style="transform: scaleX(0.281506);"></span>
+                                    </div>
+                                    <!-- .events -->
+                                </div>
+                                <!-- .events-wrapper -->
+                                <ul class="cd-timeline-navigation">
+                                    <li><a href="#0" class="prev inactive">Prev</a></li>
+                                    <li><a href="#0" class="next">Next</a></li>
+                                </ul>
+                                <!-- .cd-timeline-navigation -->
+                                <form class="form-horizontal form-pricing d-none" role="form" style="margin-top: 50px;">
+                                    <input name="month" type="hidden" id="month" value='60month' readonly="readonly" />
+                                    <div class="btn-group btn-group-justified">
+                                        <div class="btn-group btn-group-lg">
+                                            <button type="button" class="btn btn-primary btn-lg btn-block term active-term selected-term" id='monthly'>Mensal</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
 
-                        <div class="step" id="data-step-id-2" data-step-id='2' style="top: 35%;">
 
-                            <label class="formLabel" for="valoremprestimo" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
-                                    Valor do empréstimo
-                                </label>
-                            <input type="text" class="formInput" onkeyup="alteravalor()" id='valoremprestimo' name="valoremprestimo" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="." data-decimal=","
-                                data-prefix="R$ " />
-                            <div class='help-error'><i class="icon icon-warning"></i> Valor do empréstimo é necessário!</div>
+                    </div>
+                    <div class="step" data-step-id='3'>
+                        <label class="formLabel" for="tn_name">Nome completo</label>
+                        <input type="text" class="formInput" id='tn_name' name="tn_name" autocomplete="off" spellcheck="false" />
+                        <div class='help-error'><i class="icon icon-warning"></i> O nome é requerido.</div>
+                    </div>
+                    <div class="step" data-step-id='4'>
+                        <label class="formLabel" for="tn_email">E-mail</label>
+                        <input type="email" class="formInput" id='tn_email' name="tn_email" autocomplete="off" spellcheck="false" />
+                        <div class='help-error'><i class="icon icon-warning"></i> Você digitou um endereço de e-mail inválido. Por favor, tente novamente!</div>
+                        <div class="help-info">Ex. nome@empresa.com.br</div>
+                    </div>
+                    <div class="step" data-step-id='5'>
+                        <label class="formLabel" for="tn_cpf">CPF</label>
+                        <input type="text" class="formInput" id='tn_cpf' name="tn_cpf" autocomplete="off" spellcheck="false" onkeypress="$(this).mask('000.000.000-00');" />
+                        <div class='help-error'><i class="icon icon-warning"></i>Você digitou um CPF inválido. Por favor, tente novamente!</div>
 
-                            <label class="formLabel simularvalorimovel" for="valorimovel2" style="-webkit-transform: translateY(-140%); transform: translateY(-140%); font-size: 20px;">
-                                    Valor do Imóvel
-                                </label>
-                            <input type="text" class="formInput simularvalorimovel" onkeyup="alteravalor()" id='valorimovel2' name="valorimovel2" autocomplete="off" spellcheck="false" style="font-family: 'Catamaran', 'Josefin Sans', sans-serif;" maxlength="16" data-thousands="."
-                                data-decimal="," data-prefix="R$ " />
-                            <div class='help-error'><i class="icon icon-warning"></i> Valor do imóvel também é necessário! =)</div>
-
-
-
-                            <div class="cd-horizontal-timeline loaded">
-                                <h4 class="great">
-                                    Em quantas parcelas?
-                                </h4>
-                                <div class="timeline">
-                                    <div class="events-wrapper">
-                                        <div class="events" style="width: 800px;">
-                                            <ol>
-                                                <li><a href="#0" data-date="01/01/2017" class="older-event month" style="left: 20px;" id='36month'>36</a></li>
-                                                <li><a href="#0" data-date="10/01/2017" style="left: 25px;" class="older-event month" id='48month'>48</a></li>
-                                                <li><a href="#0" data-date="20/01/2017" style="left: 150px;" class="selected month active-month selected-month" id='60month'>60</a></li>
-                                                <li><a href="#0" data-date="10/02/2017" style="left: 250px;" class="month" id='72month'>72</a></li>
-                                                <li><a href="#0" data-date="20/02/2017" style="left: 325px;" class="month" id='84month'>84</a></li>
-                                                <li><a href="#0" data-date="15/03/2017" style="left: 400px;" class="month" id='96month'>96</a></li>
-                                                <li><a href="#0" data-date="25/03/2017" style="left: 475px;" class="month" id='108month'>108</a></li>
-                                                <li><a href="#0" data-date="10/04/2017" style="left: 550px;" class="month" id='120month'>120</a></li>
-                                                <li><a href="#0" data-date="00/05/2017" style="left: 675px;" class="month" id='132month'>132</a></li>
-                                                <li><a href="#0" data-date="15/05/2017" style="left: 750px;" class="month" id='144month'>144</a></li>
-                                            </ol>
-                                            <span class="filling-line" aria-hidden="true" style="transform: scaleX(0.281506);"></span>
-                                        </div>
-                                        <!-- .events -->
+                    </div>
+                    <div class="step" data-step-id='6'>
+                        <label class="formLabel" for="tn_phone">Telefone</label>
+                        <input type="text" class="formInput" id='tn_phone' name="tn_phone" autocomplete="off" spellcheck="false" />
+                        <div class='help-error'><i class="icon icon-warning"></i>Você digitou um telefone inválido. Por favor, tente novamente!</div>
+                        <div class="help-info">Ex. (11) 99123-4567 </div>
+                    </div>
+                    <div class="step step-confirm " data-step-id='7'>
+                        <form action='post' name='signupForm' autocomplete="off" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="control-label col-md-4">Valor do emprestimo</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="valoremprestimo" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
                                     </div>
-                                    <!-- .events-wrapper -->
-                                    <ul class="cd-timeline-navigation">
-                                        <li><a href="#0" class="prev inactive">Prev</a></li>
-                                        <li><a href="#0" class="next">Next</a></li>
-                                    </ul>
-                                    <!-- .cd-timeline-navigation -->
-                                    <form class="form-horizontal form-pricing d-none" role="form" style="margin-top: 50px;">
-                                        <input name="month" type="hidden" id="month" value='60month' readonly="readonly" />
-                                        <div class="btn-group btn-group-justified">
-                                            <div class="btn-group btn-group-lg">
-                                                <button type="button" class="btn btn-primary btn-lg btn-block term active-term selected-term" id='monthly'>Mensal</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">Valor do imóvel</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="valorimovel" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">Nome</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="name" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">E-mail</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="email" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">CPF</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="cpf" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-md-4">Telefone</div>
+                                <div class="col-md-8">
+                                    <div class="input-container">
+                                        <input type="text" name="phone" autocomplete="off" spellcheck="false" class="form-control" />
+                                        <a href="javascript:void(0)" class="editInput">EDITAR</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-8 col-sm-12 col-md-offset-4 col-sm-offset-0">
+                                    <label class="checkbox-inline agreement">
+                                        <input id="agreement" name="agreement" type="checkbox"/>Eu aceito os <a href="#" target="_blank">termos do serviço</a>.
+                                    </label>
                                 </div>
                             </div>
 
-
-                        </div>
-
-
-                        <div class="step" id="data-step-id-3" data-step-id='3'>
-                            <div class="step-label">[Radios] What is your gender?</div>
-                            <label class="radio-inline"><input type="radio" value="MALE" name="tn_gender" checked> Male</label>
-                            <label class="radio-inline"><input type="radio" value="FEMALE" name="tn_gender"> Female</label>
-                            <div class='help-error'><i class="icon icon-warning"></i> You must select an option at least!</div>
-                        </div>
-                        <div class="step" id="data-step-id-4" data-step-id='4'>
-                            <div class="step-label">[Dropdown] Select your favorite sport?</div>
-                            <select id='tn_sport' name="tn_sport" class="selectpicker form-control">
-                                    <option value="">Select an option</option>
-                                    <option value="FOOTBALL">Football</option>
-                                    <option value="BASKETBALL">Basketball</option>
-                                    <option value="TENNIS">Tennis</option>
-                                    <option value="RUGBY">Rugby</option>
-                                    <option value="GOLF">Golf</option>
-                                    <option value="SQUASH">Squash</option>
-                                </select>
-                            <div class='help-error'><i class="icon icon-warning"></i> You must select your favorite sport!</div>
-                        </div>
-                        <div class="step step-confirm" id="data-step-id-5" data-step-id='5'>
-                            <form action='post' name='signupForm' autocomplete="off" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">Name</div>
-                                    <div class="col-md-8">
-                                        <div class="input-container">
-                                            <input type="text" name="name" autocomplete="off" spellcheck="false" class="form-control" />
-                                            <a href="javascript:void(0)" class="editInput">EDIT</a>
-                                        </div>
-                                    </div>
+                            <div class="step-confirm-buttons">
+                                <div>
+                                    <a href="javascript:void(0)" class="btn btn-white finishBtn">Vamos começar!</a>
+                                    <span>ou aperte "Enter"</span>
                                 </div>
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">Hobbies</div>
-                                    <div class="col-md-8">
-                                        <div class="input-container">
-                                            <select name="hobbies[]" class="selectpicker form-control" multiple="multiple">
-                                                    <option value="READING">Reading Books</option>
-                                                    <option value="GUITAR">Playing Guitar</option>
-                                                    <option value="BOWLING">Bowling</option>
-                                                    <option value="BICYCLE">Riding Bicycle</option>
-                                                </select>
-                                            <a href="javascript:void(0)" class="editInput">EDIT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">Gender</div>
-                                    <div class="col-md-8">
-                                        <div class="input-container">
-                                            <select name="gender" class="selectpicker form-control">
-                                                    <option value="MALE">Male</option>
-                                                    <option value="FEMALE">Female</option>
-                                                </select>
-                                            <a href="javascript:void(0)" class="editInput">EDIT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="control-label col-md-4">Favorite Sport</div>
-                                    <div class="col-md-8">
-                                        <div class="input-container">
-                                            <select name="sport" class="selectpicker form-control">
-                                                    <option value="FOOTBALL">Football</option>
-                                                    <option value="BASKETBALL">Basketball</option>
-                                                    <option value="TENNIS">Tennis</option>
-                                                    <option value="RUGBY">Rugby</option>
-                                                    <option value="GOLF">Golf</option>
-                                                    <option value="SQUASH">Squash</option>
-                                                </select>
-                                            <a href="javascript:void(0)" class="editInput">EDIT</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-8 col-sm-12 col-md-offset-4 col-sm-offset-0">
-                                        <label class="checkbox-inline agreement">
-                                                <input id="agreement" name="agreement" type="checkbox"/>Eu concordo com os <a href="#" target="_blank">termos de serviço</a>.
-                                            </label>
-                                    </div>
-                                </div>
-
-                                <div class="step-confirm-buttons">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-white btn-rounded finishBtn">Ready, Let's Start!</a>
-                                        <span>or press "Enter"</span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class='button-container'>
-                        <div>
-                            <a href="javascript:void(0)" id="btnClick" class="btn btn-white btn-rounded nextStep" tabindex="0">Próximo passo →</a>
-                            <span>ou pressione "Enter"</span>
-                        </div>
-                        <a href="javascript:void(0)" class='btn btn-white-transparent btn-rounded prevStep' tabindex="1">← Voltar</a>
+                </div>
+                <div class='button-container'>
+                    <div>
+                        <a href="javascript:void(0)" class="btn btn-white  nextStep" tabindex="0">Próximo →</a>
+                        <span>ou aperte "Enter"</span>
                     </div>
+                    <a href="javascript:void(0)" class='btn btn-white-transparent prevStep' tabindex="1">←</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- build:js -->
-    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.bxslider.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.uniform.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="/js/sweetalert.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.maskMoney.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
-    <!-- endbuild -->
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="../../js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.maskMoney.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
 </body>
 
 </html>
