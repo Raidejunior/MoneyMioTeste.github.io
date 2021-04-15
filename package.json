@@ -1,0 +1,31 @@
+{
+    "name": "moneymio",
+    "version": "1.0.0",
+    "title": "MoneyMio",
+    "description": "Empresa de empréstimos com baixos juros mensais",
+    "main": "iniciar.html",
+    "keywords": [
+        "Finanças",
+        "Financiamento",
+        "Price",
+        "SAC",
+        "Juros",
+        "Valor Presente",
+        "Taxa",
+        "Parcela",
+        "Emprestimo",
+        "Dinheiro",
+        "Baicos Juros",
+        "Prestação"
+    ],
+    "homepage": "",
+    "author": {
+        "name": "",
+        "email": "",
+        "url": ""
+    },
+    "license": "MoneyMio",
+    "dependencies": {
+        "jquery": "^3.2.1"
+    }
+}
