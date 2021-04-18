@@ -86,8 +86,9 @@ var tunaWizard = {
                 }
             }
 
+            valoratualemprestimo = valoremprestimo.value;
 
-            calcualtePrice(valoremprestimo.value, valorimovel.value);
+            simular();
 
         }
 
@@ -549,7 +550,6 @@ $(document).ready(function() {
     });
 
 
-    $("#total").val("10000");
 
     $('.month').on('click', function(event) {
 
@@ -560,7 +560,8 @@ $(document).ready(function() {
         $(".month").removeClass("active-month");
         $(this).addClass("active-month");
 
-        calcualtePrice(valoremprestimo2.value, valorimovel2.value);
+        //calcualtePrice(valoremprestimo2.value, valorimovel2.value);
+        simular();
     });
 
     /* 
@@ -640,19 +641,20 @@ var p = {
 } */
 
 var obj = {
-    '144month': '1.10',
-    '132month': '1.20',
-    '120month': '1.30',
+    '144month': 144,
+    '132month': 132,
+    '120month': 120,
 
-    '108month': '1.40',
-    '96month': '1.50',
-    '84month': '1.60',
-    '72month': '1.70',
+    '108month': 108,
+    '96month': 96,
+    '84month': 84,
+    '72month': 72,
 
-    '60month': '1.80',
-    '48month': '1.90',
-    '36month': '2.0'
+    '60month': 60,
+    '48month': 48,
+    '36month': 36
 };
+
 
 
 
@@ -673,30 +675,139 @@ var obj = {
 }); */
 
 
+// Antiga forma de cálculo.
+//function calcualtePrice(valemp, valimo) {
 
-function calcualtePrice(valemp, valimo) {
+//if (undefined === valemp || undefined === valimo)
+//    valemp = 0, valimo = 0;
 
-    if (undefined === valemp || undefined === valimo)
-        valemp = 0, valimo = 0;
-
-    valemp = Number(valemp.replace(/[^0-9,]*/g, '').replace(',', '.'));
-    valimo = Number(valimo.replace(/[^0-9,]*/g, '').replace(',', '.'));
+//valemp = Number(valemp.replace(/[^0-9,]*/g, '').replace(',', '.'));
+//valimo = Number(valimo.replace(/[^0-9,]*/g, '').replace(',', '.'));
 
 
+//month = $(".selected-month").attr('id');
+//var term = obj[month];
+//var totalPrice = valemp + (valemp * term / (valimo * 0.07)) * 1000;
+//var primeiraParcela = totalPrice / 12;
+
+
+//var valExibir = totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+//var exibirprimeiraParcela = primeiraParcela.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+
+
+//$("#total12").val(valExibir);
+//$("#primeiraparcela").val(exibirprimeiraParcela);
+
+// $("#total52").val(Math.round((totalPrice) / 52).toFixed(2));
+//}
+
+"use strict"
+class financiar {
+    constructor(vP, i, n) {
+        this.pmt = []; /* Prestação do Financiamento*/
+        this.vP = vP; /* Valor Presente(Valor do Financiamento) */
+        this.i = i; /* Taxa de Juros ( ao mês)*/
+        this.n = n; /* Número de Parcelas(Período)*/
+        this.a = 0; /* Amortização = Valor do Financiamento dividido pelo número de parcelas */
+        this.totalJuros = 0; /* Total de juros pagos no financiamento*/
+        this.totalPago = 0; /* Total pago no financiamento acrescido os juros*/
+        this.listaSacText = ""; /* Armazena uma lista de texto puro com as prestações SAC*/
+        this.listaSacHTML = ""; /* Armazena uma lista de html com as prestações SAC*/
+
+    }
+    tratarMascaraReal() {
+        let vp = this.vP.replace(".", "");
+        vp = vp.replace(",", ".");
+        this.vP = vp;
+
+        let i = this.i.replace(".", "");
+        i = i.replace(",", ".");
+        this.i = i;
+
+    }
+    formataDados() {
+        this.i = (this.i) / 100; /* A taxa é dada em %, logo precisamos dividir por 100(pr cento) */
+    }
+
+    formataMascara(label, valor) {
+        let formato = { minimumFractionDigits: 2, style: 'currency', currency: label }
+        return valor.toLocaleString('pt-BR', formato)
+    }
+
+    calculaAmortizacao() {
+        this.a = this.vP / this.n;
+        return this.a;
+    }
+
+    financiarPrice() {
+        /* Aplicamos a fórmula de financiamento com base na tabela PRICE */
+        let prestacao = this.vP * (Math.pow((1 + this.i), this.n) * this.i) / (Math.pow((1 + this.i), this.n) - 1);
+        this.pmt.push(prestacao);
+        return this.formataMascara('BRL', this.pmt[0]);
+    }
+
+    financiarSac() {
+        /* Aplicamos a fórmula de financiamento com base na tabela SAC */
+        this.calculaAmortizacao();
+        for (let y = 0; y < this.n; y++) {
+            let prestacao = this.a + this.i * (this.vP - (y * this.a));
+            this.pmt.push(prestacao);
+            this.listaSacText += (y + 1) + ". prestação: " + this.formataMascara('BRL', prestacao) + "\n\r";
+            this.listaSacHTML += (y + 1) + ". prestação: " + this.formataMascara('BRL', prestacao) + "<br>";
+        }
+    }
+
+    calculaTotalPagoPrice() {
+        this.totalPago = this.pmt[0] * this.n;
+        return this.formataMascara('BRL', this.totalPago);
+    }
+
+    calculaTotalJurosPrice() {
+        if (this.totalPago === 0) {
+            let total = this.calculaTotalPagoPrice();
+            this.totalJuros = total - this.vP;
+        } else {
+            this.totalJuros = this.totalPago - this.vP;
+        }
+        return this.formataMascara('BRL', this.totalJuros);
+    }
+    calculaTotalPagoSac() {
+        for (let p = 0; p < this.n; p++) {
+            this.totalPago += this.pmt[p];
+        }
+        return this.formataMascara('BRL', this.totalPago);
+    }
+    calculaTotalJurosSac() {
+        if (this.totalPago === 0) {
+            let total = this.calculaTotalPagoSac();
+            this.totalJuros = total - this.vP;
+        } else {
+            this.totalJuros = this.totalPago - this.vP;
+        }
+        return this.formataMascara('BRL', this.totalJuros);
+    }
+}
+
+
+function simular() {
+    let valor = Number(valoratualemprestimo.replace(/[^0-9,]*/g, '').replace(',', '.'));;
+    let taxa = 0.0079; //i
     month = $(".selected-month").attr('id');
-    var term = obj[month];
-    var totalPrice = valemp + (valemp * term / (valimo * 0.07)) * 1000;
-    var primeiraParcela = totalPrice / 12;
+    let parcelas = this.obj[month]; //n
+    if (valor !== "" && taxa !== "" && parcelas !== "") {
 
 
-    var valExibir = totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-    var exibirprimeiraParcela = primeiraParcela.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+        let simuladorA = new financiar(valor, taxa, parcelas);
 
 
-    $("#total12").val(valExibir);
-    $("#primeiraparcela").val(exibirprimeiraParcela);
-    /* 
-        $("#total52").val(Math.round((totalPrice) / 52).toFixed(2));*/
+        var primeiraParcela = simuladorA.financiarPrice();
+        var totalPrice = simuladorA.calculaTotalPagoPrice();
+
+
+        $("#primeiraparcela").val(primeiraParcela);
+        $("#total").val(totalPrice);
+
+    }
 }
 
 function alteravalor() {
@@ -704,7 +815,7 @@ function alteravalor() {
     valoratualemprestimo = $('#valoremprestimo2').val();
     valoratualimovel2 = $('#valorimovel2').val();
 
-    calcualtePrice(valoratualemprestimo, valoratualimovel2);
+    simular();
 
     valoremprestimo.value = valoratualemprestimo;
     valorimovel.value = valoratualimovel2;
