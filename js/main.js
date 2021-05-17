@@ -734,11 +734,6 @@ class financiar {
         return valor.toLocaleString('pt-BR', formato)
     }
 
-    calculaAmortizacao() {
-        this.a = this.vP / this.n;
-        return this.a;
-    }
-
     financiarPrice() {
         /* Aplicamos a fórmula de financiamento com base na tabela PRICE */
         let prestacao = this.vP * (Math.pow((1 + this.i), this.n) * this.i) / (Math.pow((1 + this.i), this.n) - 1);
@@ -748,7 +743,7 @@ class financiar {
 
     financiarSac() {
         /* Aplicamos a fórmula de financiamento com base na tabela SAC */
-        this.calculaAmortizacao();
+        this.a = this.vP / this.n;
         for (let y = 0; y < this.n; y++) {
             let prestacao = this.a + this.i * (this.vP - (y * this.a));
             this.pmt.push(prestacao);
