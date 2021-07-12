@@ -1,6 +1,5 @@
 # https://raidejunior.github.io/MoneyMioTeste.github.io/simulacao/iniciar/iniciar.html
 
-Criação de um simulador de financiamento imobiliário e cadastro de interesse.
 
 ## Tarefas
 
